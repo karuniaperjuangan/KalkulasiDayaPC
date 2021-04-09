@@ -17,3 +17,4 @@ C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\D
 C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.csproj.CoreCompileInputs.cache
 C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.exe
 C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.pdb
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.csprojAssemblyReference.cache

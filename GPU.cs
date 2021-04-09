@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSUCalculator
 {
-    public class GPU : PCComponent, IClockDependent,NameisBrand
+    public class GPU : PCComponent, IClockDependent,INameisBrand
     {
         public GPU(string Name) : base(Name) { }
         public double base_clock;

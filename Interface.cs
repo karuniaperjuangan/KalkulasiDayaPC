@@ -13,7 +13,7 @@ namespace PSUCalculator
     {
         void ChangeFrequency(double boostClock); //Overclock or Underclocking
     }
-    interface NameisBrand //Khusus Komponen yang memiliki nama khusus/Branding yang mempengaruhi performa PC
+    interface INameisBrand //Khusus Komponen yang memiliki nama khusus/Branding yang mempengaruhi performa PC
     {
         string ShowBrand();
     }

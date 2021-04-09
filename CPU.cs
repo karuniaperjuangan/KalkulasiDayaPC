@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSUCalculator
 {
-    public class CPU : PCComponent, IClockDependent, NameisBrand
+    public class CPU : PCComponent, IClockDependent, INameisBrand
     {
         public CPU(string Name) : base(Name) { }
         public double base_clock;
