@@ -128,11 +128,12 @@ namespace PSUCalculator
                 try
                 {
                     currentKomputer.RAMPC = new RAM("RAM Komputer");
-                    currentKomputer.RAMPC.memory_size = Convert.ToInt32(txtRAMSize);
+                    currentKomputer.RAMPC.memory_size = Int32.Parse(txtRAMSize.Text);
+                    MessageBox.Show("RAM berhasil ditambahkan");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ukuran RAM harus berupa angka");
+                    MessageBox.Show("Ukuran RAM harus berupa angka bulat");
                 }
             }
         }
@@ -145,11 +146,12 @@ namespace PSUCalculator
                 try
                 {
                     currentKomputer.DrivePC = new Drive("RAM Komputer");
-                    currentKomputer.DrivePC.drive_count = Convert.ToInt32(txtDriveSlot.Text);
+                    currentKomputer.DrivePC.drive_count = Int32.Parse(txtDriveSlot.Text);
+                    MessageBox.Show("SSD/HDD berhasil ditambahkan");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ukuran RAM harus berupa angka");
+                    MessageBox.Show("Jumlah SSD dan/atau HDD harus berupa angka bulat");
                 }
             }
         }
@@ -157,6 +159,49 @@ namespace PSUCalculator
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void boxPSURating_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetPSU_Click(object sender, EventArgs e)
+        {
+            if(boxPSURating.Text == "Bronze")
+            {
+                currentKomputer.efficiencyPSU = 0.80;
+            }
+            if (boxPSURating.Text == "Silver")
+            {
+                currentKomputer.efficiencyPSU = 0.82;
+            }
+            if (boxPSURating.Text == "Gold")
+            {
+                currentKomputer.efficiencyPSU = 0.80;
+            }
+            if (boxPSURating.Text == "Platinum")
+            {
+                currentKomputer.efficiencyPSU = 0.80;
+            }
+            if (boxPSURating.Text == "Titanium")
+            {
+                currentKomputer.efficiencyPSU = 0.80;
+            }
+        }
+
+        private void label8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            double computerPower = currentKomputer.PurePower();
+            double expectedBill = PowerFormula.MonthlyPLNBill(currentKomputer);
+            int PSURecommendation = PowerFormula.PSURecommendedPower(currentKomputer);
+            string OutputMessage = string.Format("Daya yang digunakan oleh PC adalah {0} Watt.\nUntuk penggunaan sekitar {1} jam sehari, tagihan bulanan yang harus dibayarkan sebesar Rp{2}.\nRekomendasi Daya PSU adalah {3}W", computerPower.ToString(), currentKomputer.dailyUsage.ToString(), expectedBill.ToString(), PSURecommendation.ToString());
+            MessageBox.Show(OutputMessage);
         }
     }
 }

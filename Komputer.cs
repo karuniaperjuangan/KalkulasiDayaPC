@@ -8,13 +8,25 @@ namespace PSUCalculator
 {
     public class Komputer
     {
-        public double totalPower=0;
-        public string PSUType;
+        private double totalPower=0;
+        public double dailyUsage=8;
+        public double efficiencyPSU=0.75;
 
         public Motherboard MotherboardPC;
         public RAM RAMPC;
         public CPU ProcessorPC;
         public GPU GraphicsPC;
         public Drive DrivePC;
+
+        public double PurePower()
+        {
+            totalPower += this.MotherboardPC.DrawPower();
+            totalPower += this.ProcessorPC.DrawPower();
+            totalPower += this.GraphicsPC.DrawPower();
+            totalPower += this.RAMPC.DrawPower();
+            totalPower += this.DrivePC.DrawPower();
+            return totalPower;
+        }
     }
+    
 }

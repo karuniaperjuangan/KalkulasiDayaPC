@@ -52,7 +52,13 @@ namespace PSUCalculator
             this.label7 = new System.Windows.Forms.Label();
             this.txtDriveSlot = new System.Windows.Forms.TextBox();
             this.btnAddDrive = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCalculate = new System.Windows.Forms.Button();
+            this.boxPSURating = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtDailyUsage = new System.Windows.Forms.TextBox();
+            this.btnSetPSU = new System.Windows.Forms.Button();
+            this.btnSetDailyUsage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddMobo
@@ -261,21 +267,88 @@ namespace PSUCalculator
             this.btnAddDrive.UseVisualStyleBackColor = true;
             this.btnAddDrive.Click += new System.EventHandler(this.btnAddDrive_Click);
             // 
-            // button4
+            // btnCalculate
             // 
-            this.button4.Location = new System.Drawing.Point(436, 394);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 51);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "Hitung";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnCalculate.Location = new System.Drawing.Point(587, 356);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(166, 51);
+            this.btnCalculate.TabIndex = 23;
+            this.btnCalculate.Text = "Hitung";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // boxPSURating
+            // 
+            this.boxPSURating.FormattingEnabled = true;
+            this.boxPSURating.Items.AddRange(new object[] {
+            "Bronze",
+            "Silver",
+            "Gold",
+            "Platinum",
+            "Titanium"});
+            this.boxPSURating.Location = new System.Drawing.Point(587, 259);
+            this.boxPSURating.Name = "boxPSURating";
+            this.boxPSURating.Size = new System.Drawing.Size(121, 21);
+            this.boxPSURating.TabIndex = 24;
+            this.boxPSURating.SelectedIndexChanged += new System.EventHandler(this.boxPSURating_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(584, 228);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 26);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Rating PSU yang diinginkan?\r\n(Untuk Efisiensi)";
+            this.label8.Click += new System.EventHandler(this.label8_Click_1);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(584, 295);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(153, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Penggunaan Harian PC? (Jam)";
+            // 
+            // txtDailyUsage
+            // 
+            this.txtDailyUsage.Location = new System.Drawing.Point(587, 317);
+            this.txtDailyUsage.Name = "txtDailyUsage";
+            this.txtDailyUsage.Size = new System.Drawing.Size(121, 20);
+            this.txtDailyUsage.TabIndex = 27;
+            // 
+            // btnSetPSU
+            // 
+            this.btnSetPSU.Location = new System.Drawing.Point(723, 257);
+            this.btnSetPSU.Name = "btnSetPSU";
+            this.btnSetPSU.Size = new System.Drawing.Size(43, 23);
+            this.btnSetPSU.TabIndex = 28;
+            this.btnSetPSU.Text = "Set";
+            this.btnSetPSU.UseVisualStyleBackColor = true;
+            this.btnSetPSU.Click += new System.EventHandler(this.btnSetPSU_Click);
+            // 
+            // btnSetDailyUsage
+            // 
+            this.btnSetDailyUsage.Location = new System.Drawing.Point(723, 316);
+            this.btnSetDailyUsage.Name = "btnSetDailyUsage";
+            this.btnSetDailyUsage.Size = new System.Drawing.Size(43, 23);
+            this.btnSetDailyUsage.TabIndex = 29;
+            this.btnSetDailyUsage.Text = "Set";
+            this.btnSetDailyUsage.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 457);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(797, 427);
+            this.Controls.Add(this.btnSetDailyUsage);
+            this.Controls.Add(this.btnSetPSU);
+            this.Controls.Add(this.txtDailyUsage);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.boxPSURating);
+            this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.btnAddDrive);
             this.Controls.Add(this.txtDriveSlot);
             this.Controls.Add(this.label7);
@@ -332,7 +405,13 @@ namespace PSUCalculator
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDriveSlot;
         private System.Windows.Forms.Button btnAddDrive;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCalculate;
+        private System.Windows.Forms.ComboBox boxPSURating;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtDailyUsage;
+        private System.Windows.Forms.Button btnSetPSU;
+        private System.Windows.Forms.Button btnSetDailyUsage;
     }
 }
 
