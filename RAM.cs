@@ -16,7 +16,7 @@ namespace PSUCalculator
             return 1/2 * memory_size;
         }
     }
-    // Ternyata pada teknologi saat ini, RAM lebih hemat 75%
+    // Ternyata pada teknologi saat ini, RAM lebih hemat 75% (Open Closed Principle)
     public class RevisedRAM : RAM
     {
         public RevisedRAM(string Name) : base(Name) { }

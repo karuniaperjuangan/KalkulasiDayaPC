@@ -12,7 +12,7 @@ namespace PSUCalculator
         public double base_clock;
         public double TDP;
         public double boosted_clock;
-        public double clock_ratio;
+        public double clock_ratio =1;
 
 
         public void ChangeFrequency()

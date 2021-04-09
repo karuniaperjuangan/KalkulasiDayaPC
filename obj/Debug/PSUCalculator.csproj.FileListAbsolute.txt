@@ -8,3 +8,13 @@ C:\Users\Karunia Perjuangan\source\repos\PSUCalculator\obj\Debug\PSUCalculator.c
 C:\Users\Karunia Perjuangan\source\repos\PSUCalculator\obj\Debug\PSUCalculator.csproj.CoreCompileInputs.cache
 C:\Users\Karunia Perjuangan\source\repos\PSUCalculator\obj\Debug\PSUCalculator.exe
 C:\Users\Karunia Perjuangan\source\repos\PSUCalculator\obj\Debug\PSUCalculator.pdb
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.csprojAssemblyReference.cache
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.Form1.resources
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.Properties.Resources.resources
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.csproj.GenerateResource.cache
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.csproj.CoreCompileInputs.cache
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.exe
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\obj\Debug\PSUCalculator.pdb
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\bin\Debug\PSUCalculator.exe.config
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\bin\Debug\PSUCalculator.exe
+C:\Users\Karunia Perjuangan\Source\Repos\karuniaperjuangan\KalkulasiDayaPC\bin\Debug\PSUCalculator.pdb

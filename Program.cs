@@ -14,7 +14,6 @@ namespace PSUCalculator
         [STAThread]
         static void Main()
         {
-            Komputer currentKomputer = new Komputer();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
