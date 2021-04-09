@@ -20,6 +20,7 @@ namespace PSUCalculator
 
         public double PurePower()
         {
+            totalPower = 0;
             totalPower += this.MotherboardPC.DrawPower();
             totalPower += this.ProcessorPC.DrawPower();
             totalPower += this.GraphicsPC.DrawPower();

@@ -59,11 +59,12 @@ namespace PSUCalculator
             this.txtDailyUsage = new System.Windows.Forms.TextBox();
             this.btnSetPSU = new System.Windows.Forms.Button();
             this.btnSetDailyUsage = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddMobo
             // 
-            this.btnAddMobo.Location = new System.Drawing.Point(171, 51);
+            this.btnAddMobo.Location = new System.Drawing.Point(178, 87);
             this.btnAddMobo.Name = "btnAddMobo";
             this.btnAddMobo.Size = new System.Drawing.Size(75, 23);
             this.btnAddMobo.TabIndex = 0;
@@ -74,7 +75,7 @@ namespace PSUCalculator
             // lblMotherboard
             // 
             this.lblMotherboard.AutoSize = true;
-            this.lblMotherboard.Location = new System.Drawing.Point(27, 27);
+            this.lblMotherboard.Location = new System.Drawing.Point(34, 63);
             this.lblMotherboard.Name = "lblMotherboard";
             this.lblMotherboard.Size = new System.Drawing.Size(172, 13);
             this.lblMotherboard.TabIndex = 1;
@@ -89,7 +90,7 @@ namespace PSUCalculator
             "Mini ITX",
             "ATX",
             "XLATX"});
-            this.boxMoboSize.Location = new System.Drawing.Point(30, 53);
+            this.boxMoboSize.Location = new System.Drawing.Point(37, 89);
             this.boxMoboSize.Name = "boxMoboSize";
             this.boxMoboSize.Size = new System.Drawing.Size(121, 21);
             this.boxMoboSize.TabIndex = 2;
@@ -98,7 +99,7 @@ namespace PSUCalculator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 92);
+            this.label1.Location = new System.Drawing.Point(34, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 3;
@@ -107,14 +108,14 @@ namespace PSUCalculator
             // 
             // txtProcName
             // 
-            this.txtProcName.Location = new System.Drawing.Point(30, 117);
+            this.txtProcName.Location = new System.Drawing.Point(37, 153);
             this.txtProcName.Name = "txtProcName";
             this.txtProcName.Size = new System.Drawing.Size(121, 20);
             this.txtProcName.TabIndex = 4;
             // 
             // btnAddProcessor
             // 
-            this.btnAddProcessor.Location = new System.Drawing.Point(369, 115);
+            this.btnAddProcessor.Location = new System.Drawing.Point(376, 151);
             this.btnAddProcessor.Name = "btnAddProcessor";
             this.btnAddProcessor.Size = new System.Drawing.Size(75, 23);
             this.btnAddProcessor.TabIndex = 5;
@@ -125,7 +126,7 @@ namespace PSUCalculator
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(284, 91);
+            this.label2.Location = new System.Drawing.Point(291, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 13);
             this.label2.TabIndex = 6;
@@ -134,7 +135,7 @@ namespace PSUCalculator
             // 
             // txtProcClock
             // 
-            this.txtProcClock.Location = new System.Drawing.Point(287, 118);
+            this.txtProcClock.Location = new System.Drawing.Point(294, 154);
             this.txtProcClock.Name = "txtProcClock";
             this.txtProcClock.Size = new System.Drawing.Size(75, 20);
             this.txtProcClock.TabIndex = 7;
@@ -142,7 +143,7 @@ namespace PSUCalculator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 155);
+            this.label3.Location = new System.Drawing.Point(34, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 8;
@@ -150,7 +151,7 @@ namespace PSUCalculator
             // 
             // txtProcTDP
             // 
-            this.txtProcTDP.Location = new System.Drawing.Point(157, 117);
+            this.txtProcTDP.Location = new System.Drawing.Point(164, 153);
             this.txtProcTDP.Name = "txtProcTDP";
             this.txtProcTDP.Size = new System.Drawing.Size(121, 20);
             this.txtProcTDP.TabIndex = 10;
@@ -158,7 +159,7 @@ namespace PSUCalculator
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(154, 91);
+            this.label4.Location = new System.Drawing.Point(161, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 13);
             this.label4.TabIndex = 9;
@@ -166,7 +167,7 @@ namespace PSUCalculator
             // 
             // txtGPUTDP
             // 
-            this.txtGPUTDP.Location = new System.Drawing.Point(157, 181);
+            this.txtGPUTDP.Location = new System.Drawing.Point(164, 217);
             this.txtGPUTDP.Name = "txtGPUTDP";
             this.txtGPUTDP.Size = new System.Drawing.Size(121, 20);
             this.txtGPUTDP.TabIndex = 16;
@@ -174,7 +175,7 @@ namespace PSUCalculator
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, 155);
+            this.label5.Location = new System.Drawing.Point(161, 191);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 13);
             this.label5.TabIndex = 15;
@@ -182,7 +183,7 @@ namespace PSUCalculator
             // 
             // txtGPUClock
             // 
-            this.txtGPUClock.Location = new System.Drawing.Point(287, 182);
+            this.txtGPUClock.Location = new System.Drawing.Point(294, 218);
             this.txtGPUClock.Name = "txtGPUClock";
             this.txtGPUClock.Size = new System.Drawing.Size(75, 20);
             this.txtGPUClock.TabIndex = 14;
@@ -190,7 +191,7 @@ namespace PSUCalculator
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(284, 155);
+            this.label6.Location = new System.Drawing.Point(291, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 13);
             this.label6.TabIndex = 13;
@@ -198,7 +199,7 @@ namespace PSUCalculator
             // 
             // btnAddGPU
             // 
-            this.btnAddGPU.Location = new System.Drawing.Point(369, 179);
+            this.btnAddGPU.Location = new System.Drawing.Point(376, 215);
             this.btnAddGPU.Name = "btnAddGPU";
             this.btnAddGPU.Size = new System.Drawing.Size(75, 23);
             this.btnAddGPU.TabIndex = 12;
@@ -208,7 +209,7 @@ namespace PSUCalculator
             // 
             // txtGPUName
             // 
-            this.txtGPUName.Location = new System.Drawing.Point(30, 181);
+            this.txtGPUName.Location = new System.Drawing.Point(37, 217);
             this.txtGPUName.Name = "txtGPUName";
             this.txtGPUName.Size = new System.Drawing.Size(121, 20);
             this.txtGPUName.TabIndex = 11;
@@ -216,7 +217,7 @@ namespace PSUCalculator
             // lblRAM
             // 
             this.lblRAM.AutoSize = true;
-            this.lblRAM.Location = new System.Drawing.Point(27, 217);
+            this.lblRAM.Location = new System.Drawing.Point(34, 253);
             this.lblRAM.Name = "lblRAM";
             this.lblRAM.Size = new System.Drawing.Size(99, 13);
             this.lblRAM.TabIndex = 17;
@@ -225,7 +226,7 @@ namespace PSUCalculator
             // 
             // btnAddRAM
             // 
-            this.btnAddRAM.Location = new System.Drawing.Point(171, 241);
+            this.btnAddRAM.Location = new System.Drawing.Point(178, 277);
             this.btnAddRAM.Name = "btnAddRAM";
             this.btnAddRAM.Size = new System.Drawing.Size(75, 23);
             this.btnAddRAM.TabIndex = 19;
@@ -235,7 +236,7 @@ namespace PSUCalculator
             // 
             // txtRAMSize
             // 
-            this.txtRAMSize.Location = new System.Drawing.Point(30, 243);
+            this.txtRAMSize.Location = new System.Drawing.Point(37, 279);
             this.txtRAMSize.Name = "txtRAMSize";
             this.txtRAMSize.Size = new System.Drawing.Size(121, 20);
             this.txtRAMSize.TabIndex = 18;
@@ -244,7 +245,7 @@ namespace PSUCalculator
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 286);
+            this.label7.Location = new System.Drawing.Point(34, 322);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(207, 13);
             this.label7.TabIndex = 20;
@@ -252,14 +253,14 @@ namespace PSUCalculator
             // 
             // txtDriveSlot
             // 
-            this.txtDriveSlot.Location = new System.Drawing.Point(30, 316);
+            this.txtDriveSlot.Location = new System.Drawing.Point(37, 352);
             this.txtDriveSlot.Name = "txtDriveSlot";
             this.txtDriveSlot.Size = new System.Drawing.Size(121, 20);
             this.txtDriveSlot.TabIndex = 21;
             // 
             // btnAddDrive
             // 
-            this.btnAddDrive.Location = new System.Drawing.Point(171, 314);
+            this.btnAddDrive.Location = new System.Drawing.Point(178, 350);
             this.btnAddDrive.Name = "btnAddDrive";
             this.btnAddDrive.Size = new System.Drawing.Size(75, 23);
             this.btnAddDrive.TabIndex = 22;
@@ -269,7 +270,7 @@ namespace PSUCalculator
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(587, 356);
+            this.btnCalculate.Location = new System.Drawing.Point(594, 392);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(166, 51);
             this.btnCalculate.TabIndex = 23;
@@ -286,7 +287,7 @@ namespace PSUCalculator
             "Gold",
             "Platinum",
             "Titanium"});
-            this.boxPSURating.Location = new System.Drawing.Point(587, 259);
+            this.boxPSURating.Location = new System.Drawing.Point(594, 295);
             this.boxPSURating.Name = "boxPSURating";
             this.boxPSURating.Size = new System.Drawing.Size(121, 21);
             this.boxPSURating.TabIndex = 24;
@@ -295,7 +296,7 @@ namespace PSUCalculator
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(584, 228);
+            this.label8.Location = new System.Drawing.Point(591, 264);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 26);
             this.label8.TabIndex = 25;
@@ -305,7 +306,7 @@ namespace PSUCalculator
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(584, 295);
+            this.label9.Location = new System.Drawing.Point(591, 331);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(153, 13);
             this.label9.TabIndex = 26;
@@ -313,14 +314,14 @@ namespace PSUCalculator
             // 
             // txtDailyUsage
             // 
-            this.txtDailyUsage.Location = new System.Drawing.Point(587, 317);
+            this.txtDailyUsage.Location = new System.Drawing.Point(594, 353);
             this.txtDailyUsage.Name = "txtDailyUsage";
             this.txtDailyUsage.Size = new System.Drawing.Size(121, 20);
             this.txtDailyUsage.TabIndex = 27;
             // 
             // btnSetPSU
             // 
-            this.btnSetPSU.Location = new System.Drawing.Point(723, 257);
+            this.btnSetPSU.Location = new System.Drawing.Point(730, 293);
             this.btnSetPSU.Name = "btnSetPSU";
             this.btnSetPSU.Size = new System.Drawing.Size(43, 23);
             this.btnSetPSU.TabIndex = 28;
@@ -330,18 +331,30 @@ namespace PSUCalculator
             // 
             // btnSetDailyUsage
             // 
-            this.btnSetDailyUsage.Location = new System.Drawing.Point(723, 316);
+            this.btnSetDailyUsage.Location = new System.Drawing.Point(730, 352);
             this.btnSetDailyUsage.Name = "btnSetDailyUsage";
             this.btnSetDailyUsage.Size = new System.Drawing.Size(43, 23);
             this.btnSetDailyUsage.TabIndex = 29;
             this.btnSetDailyUsage.Text = "Set";
             this.btnSetDailyUsage.UseVisualStyleBackColor = true;
+            this.btnSetDailyUsage.Click += new System.EventHandler(this.btnSetDailyUsage_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(34, 26);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(468, 15);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Jangan lupa menekan tombol Tambahkan dan Set sebelum menghitung";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 427);
+            this.ClientSize = new System.Drawing.Size(797, 457);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnSetDailyUsage);
             this.Controls.Add(this.btnSetPSU);
             this.Controls.Add(this.txtDailyUsage);
@@ -412,6 +425,7 @@ namespace PSUCalculator
         private System.Windows.Forms.TextBox txtDailyUsage;
         private System.Windows.Forms.Button btnSetPSU;
         private System.Windows.Forms.Button btnSetDailyUsage;
+        private System.Windows.Forms.Label label10;
     }
 }
 
