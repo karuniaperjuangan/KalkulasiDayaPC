@@ -9,10 +9,10 @@ namespace PSUCalculator
     //Tidak semua Komponen PC memiliki ukuran Clock
     interface IClockDependent
     {
-        void ChangeFrequency(); //Overclock or Underclocking
+        void ChangeFrequency(double boostClock); //Overclock or Underclocking
     }
-    interface IComponent
+    interface NameisBrand //Khusus Komponen yang memiliki nama khusus/Branding yang mempengaruhi performa PC
     {
-        double drawPower();
+        string ShowBrand();
     }
 }

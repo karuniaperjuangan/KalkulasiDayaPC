@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSUCalculator
 {
-    public class CPU : PCComponent, IClockDependent
+    public class CPU : PCComponent, IClockDependent, NameisBrand
     {
         public CPU(string Name) : base(Name) { }
         public double base_clock;
@@ -15,15 +15,21 @@ namespace PSUCalculator
         public double clock_ratio =1;
 
 
-        public void ChangeFrequency()
-        {
-            clock_ratio = boosted_clock/base_clock;
-        }
 
         public override double DrawPower()
         {
             return TDP*clock_ratio;
         }
 
+        public void ChangeFrequency(double boostClock)
+        {
+            clock_ratio = boostClock / base_clock;
+        }
+
+        public string ShowBrand()
+        {
+            string s = string.Format("This component name is {0} ", this.name);
+            return s;
+        }
     }
 }

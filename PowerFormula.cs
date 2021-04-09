@@ -11,7 +11,7 @@ namespace PSUCalculator
 
         public static int PSURecommendedPower(Komputer komputer)
         {
-            int RecommendedPower = Convert.ToInt32(Math.Ceiling(komputer.PurePower()*1.5D / 50)*50);
+            int RecommendedPower = Convert.ToInt32(Math.Ceiling(komputer.PurePower()*1.5D / 50)*50); //Batas aman PSU biasanya 150% dari beban TDP-TDP komponennya, Rekomendasi PSU merupakan kelipatan 50W (sesuai PSU dalam dunia nyata)
             return RecommendedPower;
         }
         public static double MonthlyPLNBill(Komputer komputer)

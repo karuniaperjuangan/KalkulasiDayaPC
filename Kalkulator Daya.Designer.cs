@@ -60,6 +60,12 @@ namespace PSUCalculator
             this.btnSetPSU = new System.Windows.Forms.Button();
             this.btnSetDailyUsage = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtProBoostClock = new System.Windows.Forms.TextBox();
+            this.txtGPUBoostClock = new System.Windows.Forms.TextBox();
+            this.btnOCPro = new System.Windows.Forms.Button();
+            this.btnOCGPU = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddMobo
@@ -270,7 +276,7 @@ namespace PSUCalculator
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(594, 392);
+            this.btnCalculate.Location = new System.Drawing.Point(582, 421);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(166, 51);
             this.btnCalculate.TabIndex = 23;
@@ -287,7 +293,7 @@ namespace PSUCalculator
             "Gold",
             "Platinum",
             "Titanium"});
-            this.boxPSURating.Location = new System.Drawing.Point(594, 295);
+            this.boxPSURating.Location = new System.Drawing.Point(582, 324);
             this.boxPSURating.Name = "boxPSURating";
             this.boxPSURating.Size = new System.Drawing.Size(121, 21);
             this.boxPSURating.TabIndex = 24;
@@ -296,7 +302,7 @@ namespace PSUCalculator
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(591, 264);
+            this.label8.Location = new System.Drawing.Point(579, 293);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 26);
             this.label8.TabIndex = 25;
@@ -306,7 +312,7 @@ namespace PSUCalculator
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(591, 331);
+            this.label9.Location = new System.Drawing.Point(579, 360);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(153, 13);
             this.label9.TabIndex = 26;
@@ -314,14 +320,14 @@ namespace PSUCalculator
             // 
             // txtDailyUsage
             // 
-            this.txtDailyUsage.Location = new System.Drawing.Point(594, 353);
+            this.txtDailyUsage.Location = new System.Drawing.Point(582, 382);
             this.txtDailyUsage.Name = "txtDailyUsage";
             this.txtDailyUsage.Size = new System.Drawing.Size(121, 20);
             this.txtDailyUsage.TabIndex = 27;
             // 
             // btnSetPSU
             // 
-            this.btnSetPSU.Location = new System.Drawing.Point(730, 293);
+            this.btnSetPSU.Location = new System.Drawing.Point(718, 322);
             this.btnSetPSU.Name = "btnSetPSU";
             this.btnSetPSU.Size = new System.Drawing.Size(43, 23);
             this.btnSetPSU.TabIndex = 28;
@@ -331,7 +337,7 @@ namespace PSUCalculator
             // 
             // btnSetDailyUsage
             // 
-            this.btnSetDailyUsage.Location = new System.Drawing.Point(730, 352);
+            this.btnSetDailyUsage.Location = new System.Drawing.Point(718, 381);
             this.btnSetDailyUsage.Name = "btnSetDailyUsage";
             this.btnSetDailyUsage.Size = new System.Drawing.Size(43, 23);
             this.btnSetDailyUsage.TabIndex = 29;
@@ -349,11 +355,73 @@ namespace PSUCalculator
             this.label10.TabIndex = 30;
             this.label10.Text = "Jangan lupa menekan tombol Tambahkan dan Set sebelum menghitung";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(460, 128);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(178, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Overclock/Underclock CPU? (MHz)";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(460, 191);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(179, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Overclock/Underclock GPU? (MHz)";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // txtProBoostClock
+            // 
+            this.txtProBoostClock.Location = new System.Drawing.Point(463, 154);
+            this.txtProBoostClock.Name = "txtProBoostClock";
+            this.txtProBoostClock.Size = new System.Drawing.Size(113, 20);
+            this.txtProBoostClock.TabIndex = 33;
+            // 
+            // txtGPUBoostClock
+            // 
+            this.txtGPUBoostClock.Location = new System.Drawing.Point(463, 215);
+            this.txtGPUBoostClock.Name = "txtGPUBoostClock";
+            this.txtGPUBoostClock.Size = new System.Drawing.Size(113, 20);
+            this.txtGPUBoostClock.TabIndex = 34;
+            // 
+            // btnOCPro
+            // 
+            this.btnOCPro.Enabled = false;
+            this.btnOCPro.Location = new System.Drawing.Point(582, 151);
+            this.btnOCPro.Name = "btnOCPro";
+            this.btnOCPro.Size = new System.Drawing.Size(50, 23);
+            this.btnOCPro.TabIndex = 35;
+            this.btnOCPro.Text = "OC/UC";
+            this.btnOCPro.UseVisualStyleBackColor = true;
+            this.btnOCPro.Click += new System.EventHandler(this.btnOCPro_Click);
+            // 
+            // btnOCGPU
+            // 
+            this.btnOCGPU.Enabled = false;
+            this.btnOCGPU.Location = new System.Drawing.Point(582, 214);
+            this.btnOCGPU.Name = "btnOCGPU";
+            this.btnOCGPU.Size = new System.Drawing.Size(50, 23);
+            this.btnOCGPU.TabIndex = 36;
+            this.btnOCGPU.Text = "OC/UC";
+            this.btnOCGPU.UseVisualStyleBackColor = true;
+            this.btnOCGPU.Click += new System.EventHandler(this.btnOCGPU_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 457);
+            this.ClientSize = new System.Drawing.Size(797, 483);
+            this.Controls.Add(this.btnOCGPU);
+            this.Controls.Add(this.btnOCPro);
+            this.Controls.Add(this.txtGPUBoostClock);
+            this.Controls.Add(this.txtProBoostClock);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnSetDailyUsage);
             this.Controls.Add(this.btnSetPSU);
@@ -426,6 +494,12 @@ namespace PSUCalculator
         private System.Windows.Forms.Button btnSetPSU;
         private System.Windows.Forms.Button btnSetDailyUsage;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtProBoostClock;
+        private System.Windows.Forms.TextBox txtGPUBoostClock;
+        private System.Windows.Forms.Button btnOCPro;
+        private System.Windows.Forms.Button btnOCGPU;
     }
 }
 

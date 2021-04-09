@@ -85,6 +85,7 @@ namespace PSUCalculator
                     currentKomputer.ProcessorPC = new CPU(txtProcName.Text);
                     currentKomputer.ProcessorPC.TDP = Convert.ToDouble(txtProcTDP.Text);
                     currentKomputer.ProcessorPC.base_clock = Convert.ToDouble(txtProcClock.Text);
+                    btnOCPro.Enabled = true;
                     MessageBox.Show("Prosesor "+ currentKomputer.ProcessorPC.name + " Berhasil Ditambahkan");
 
                 }
@@ -105,6 +106,7 @@ namespace PSUCalculator
                     currentKomputer.GraphicsPC = new GPU(txtGPUName.Text);
                     currentKomputer.GraphicsPC.TDP = Convert.ToDouble(txtGPUTDP.Text);
                     currentKomputer.GraphicsPC.base_clock = Convert.ToDouble(txtGPUClock.Text);
+                    btnOCGPU.Enabled = true;
                     MessageBox.Show("GPU " + currentKomputer.GraphicsPC.name + " Berhasil Ditambahkan");
 
                 }
@@ -205,11 +207,18 @@ namespace PSUCalculator
 
         private void button4_Click(object sender, EventArgs e)
         {
-            double computerPower = currentKomputer.PurePower();
-            double expectedBill = PowerFormula.MonthlyPLNBill(currentKomputer);
-            int PSURecommendation = PowerFormula.PSURecommendedPower(currentKomputer);
-            string OutputMessage = string.Format("Daya yang digunakan oleh PC adalah {0} Watt.\nUntuk penggunaan sekitar {1} jam sehari, tagihan bulanan yang harus dibayarkan sebesar Rp{2}.\nRekomendasi Daya PSU adalah {3}W", computerPower.ToString(), currentKomputer.dailyUsage.ToString(), expectedBill.ToString(), PSURecommendation.ToString());
-            MessageBox.Show(OutputMessage);
+            try 
+            { 
+                double computerPower = currentKomputer.PurePower();
+                double expectedBill = PowerFormula.MonthlyPLNBill(currentKomputer);
+                int PSURecommendation = PowerFormula.PSURecommendedPower(currentKomputer);
+                string OutputMessage = string.Format("Daya yang digunakan oleh PC adalah {0} Watt.\nUntuk penggunaan sekitar {1} jam sehari, tagihan bulanan yang harus dibayarkan sebesar Rp{2}.\nRekomendasi Daya PSU adalah {3}W", computerPower.ToString(), currentKomputer.dailyUsage.ToString(), expectedBill.ToString(), PSURecommendation.ToString());
+                MessageBox.Show(OutputMessage);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Pastikan semua komponen sudah ditambahkan");
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -230,6 +239,52 @@ namespace PSUCalculator
                 catch (Exception)
                 {
                     MessageBox.Show("Jam harus berupa angka");
+                }
+            }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOCPro_Click(object sender, EventArgs e)
+        {
+            if (txtProBoostClock.Text == "") MessageBox.Show("Silahkan Masukkan Clock OC/UC");
+            else
+            {
+                try
+                {
+                    double boostClock = Convert.ToDouble(txtProBoostClock.Text);
+                    currentKomputer.ProcessorPC.ChangeFrequency(boostClock);
+                    MessageBox.Show("Clock Processor berhasil diubah dari base clock");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Clock harus berupa angka");
+                }
+            }
+        }
+
+        private void btnOCGPU_Click(object sender, EventArgs e)
+        {
+            if (txtGPUBoostClock.Text == "") MessageBox.Show("Silahkan Masukkan Clock OC/UC");
+            else
+            {
+                try
+                {
+                    double boostClock = Convert.ToDouble(txtGPUBoostClock.Text);
+                    currentKomputer.GraphicsPC.ChangeFrequency(boostClock);
+                    MessageBox.Show("Clock Processor berhasil diubah dari base clock");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Clock harus berupa angka");
                 }
             }
         }
