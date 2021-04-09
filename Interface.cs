@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PSUCalculator
 {
+    //Interface Segregation Principle : Tidak semua method dipaksakan ke semua komponen, hanya yang memiliki sifat tertentu saja yang perlu diberi interface
+
     //Tidak semua Komponen PC memiliki ukuran Clock
     interface IClockDependent
     {

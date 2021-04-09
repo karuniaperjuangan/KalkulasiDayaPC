@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSUCalculator
 {
+    //Selain sebagai bentuk relationship Composition, class Komputer dibentuk agar di kemudian hari dapat dilakukan modifikasi jenis komputer baru
     public class Komputer
     {
         private double totalPower=0;
