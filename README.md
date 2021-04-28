@@ -1,3 +1,7 @@
+Update :
+Untuk Tugas Database ada di <b> WithDatabase Branch</b>
+Untuk UTS ada di <b> main branch </b> (Karena yang ada di database branch cukup berubah drastis)
+
 # KalkulasiDayaPC
 Ujian Tengah Semester Pemrograman Berorientasi Objek (Status : For Submission✔)
 
