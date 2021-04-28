@@ -375,5 +375,47 @@ namespace PSUCalculator
             var EditGPU = new Edit_GPU();
             EditGPU.Show();
         }
+
+        private void btnSaveProfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedCPU, selectedGPU;
+                if (txtProcName.SelectedValue == null) return;
+                int.TryParse(txtProcName.SelectedValue.ToString(), out selectedCPU);
+                if (txtGPUName.SelectedValue == null) return;
+                int.TryParse(txtGPUName.SelectedValue.ToString(), out selectedGPU);
+
+                using (var db = new ComputerDBEntities())
+                {
+                    DBComputer newComputer = new DBComputer()
+                    {
+                        OwnerName = txtOwnerName.Text,
+                        Motherboard_Size = currentKomputer.MotherboardPC.Size,
+                        GPU_Id = selectedGPU,
+                        CPU_Id =selectedCPU,
+                        RAM_Size = currentKomputer.RAMPC.memory_size,
+                        Drive_Count = currentKomputer.DrivePC.drive_count
+                    };
+                    db.DBComputer.Add(newComputer);
+                    db.SaveChanges();
+                    MessageBox.Show("Profil sukses disimpan");
+
+                    var Resetted = new Form1();
+                    Resetted.Show();
+                    Hide();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Gagal Menambahkan");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var CekProfil = new CekProfil();
+            CekProfil.Show();
+        }
     }
 }

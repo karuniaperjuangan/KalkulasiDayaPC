@@ -82,6 +82,12 @@
     <Compile Include="Add_GPU.Designer.cs">
       <DependentUpon>Add_GPU.cs</DependentUpon>
     </Compile>
+    <Compile Include="CekProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CekProfil.Designer.cs">
+      <DependentUpon>CekProfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComputerDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add_GPU.resx">
       <DependentUpon>Add_GPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CekProfil.resx">
+      <DependentUpon>CekProfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edit CPU.resx">
       <DependentUpon>Edit CPU.cs</DependentUpon>

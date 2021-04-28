@@ -39,3 +39,4 @@ C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Add_GPU.resources
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Edit_CPU.resources
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Edit_GPU.resources
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.CekProfil.resources
