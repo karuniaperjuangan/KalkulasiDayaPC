@@ -30,7 +30,10 @@ namespace PSUCalculator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_GPU));
             this.txtGPUName = new System.Windows.Forms.ComboBox();
+            this.dBGPUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnExecute = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,12 +41,10 @@ namespace PSUCalculator
             this.lblNewName = new System.Windows.Forms.Label();
             this.txtNewClock = new System.Windows.Forms.TextBox();
             this.txtNewTDP = new System.Windows.Forms.TextBox();
-            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
-            this.dBGPUBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dBGPUTableAdapter = new PSUCalculator.ComputerDBDataSetTableAdapters.DBGPUTableAdapter();
             this.btnDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBGPUBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // txtGPUName
@@ -57,6 +58,16 @@ namespace PSUCalculator
             this.txtGPUName.TabIndex = 47;
             this.txtGPUName.ValueMember = "Id";
             this.txtGPUName.SelectedIndexChanged += new System.EventHandler(this.txtGPUName_SelectedIndexChanged);
+            // 
+            // dBGPUBindingSource
+            // 
+            this.dBGPUBindingSource.DataMember = "DBGPU";
+            this.dBGPUBindingSource.DataSource = this.computerDBDataSet;
+            // 
+            // computerDBDataSet
+            // 
+            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
+            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnCancel
             // 
@@ -119,16 +130,6 @@ namespace PSUCalculator
             this.txtNewTDP.Size = new System.Drawing.Size(315, 20);
             this.txtNewTDP.TabIndex = 40;
             // 
-            // computerDBDataSet
-            // 
-            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
-            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dBGPUBindingSource
-            // 
-            this.dBGPUBindingSource.DataMember = "DBGPU";
-            this.dBGPUBindingSource.DataSource = this.computerDBDataSet;
-            // 
             // dBGPUTableAdapter
             // 
             this.dBGPUTableAdapter.ClearBeforeFill = true;
@@ -157,11 +158,12 @@ namespace PSUCalculator
             this.Controls.Add(this.lblNewName);
             this.Controls.Add(this.txtNewClock);
             this.Controls.Add(this.txtNewTDP);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Edit_GPU";
             this.Text = "Edit GPU";
             this.Load += new System.EventHandler(this.Edit_GPU_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBGPUBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

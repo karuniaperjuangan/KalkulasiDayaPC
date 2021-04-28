@@ -30,6 +30,7 @@ namespace PSUCalculator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnAddMobo = new System.Windows.Forms.Button();
             this.lblMotherboard = new System.Windows.Forms.Label();
             this.boxMoboSize = new System.Windows.Forms.ComboBox();
@@ -609,6 +610,7 @@ namespace PSUCalculator
             this.Controls.Add(this.boxMoboSize);
             this.Controls.Add(this.lblMotherboard);
             this.Controls.Add(this.btnAddMobo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Penghitung Daya PC";
             this.Load += new System.EventHandler(this.Form1_Load);

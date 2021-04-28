@@ -29,6 +29,7 @@ namespace PSUCalculator
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_CPU));
             this.txtNewName = new System.Windows.Forms.TextBox();
             this.txtNewTDP = new System.Windows.Forms.TextBox();
             this.txtNewClock = new System.Windows.Forms.TextBox();
@@ -120,6 +121,7 @@ namespace PSUCalculator
             this.Controls.Add(this.txtNewClock);
             this.Controls.Add(this.txtNewTDP);
             this.Controls.Add(this.txtNewName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Add_CPU";
             this.Text = "Tambahkan CPU";
             this.ResumeLayout(false);

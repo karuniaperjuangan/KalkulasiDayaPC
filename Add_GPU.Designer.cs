@@ -29,6 +29,7 @@ namespace PSUCalculator
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_GPU));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnExecute = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -120,6 +121,7 @@ namespace PSUCalculator
             this.Controls.Add(this.txtNewClock);
             this.Controls.Add(this.txtNewTDP);
             this.Controls.Add(this.txtNewName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Add_GPU";
             this.Text = "Add_GPU";
             this.Load += new System.EventHandler(this.Add_GPU_Load);

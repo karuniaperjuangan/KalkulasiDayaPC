@@ -30,6 +30,7 @@ namespace PSUCalculator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_CPU));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnExecute = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,12 +39,12 @@ namespace PSUCalculator
             this.txtNewClock = new System.Windows.Forms.TextBox();
             this.txtNewTDP = new System.Windows.Forms.TextBox();
             this.txtProcName = new System.Windows.Forms.ComboBox();
-            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
             this.dBCPUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
             this.dBCPUTableAdapter = new PSUCalculator.ComputerDBDataSetTableAdapters.DBCPUTableAdapter();
             this.btnDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBCPUBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -119,15 +120,15 @@ namespace PSUCalculator
             this.txtProcName.ValueMember = "Id";
             this.txtProcName.SelectedIndexChanged += new System.EventHandler(this.txtProcName_SelectedIndexChanged);
             // 
-            // computerDBDataSet
-            // 
-            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
-            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dBCPUBindingSource
             // 
             this.dBCPUBindingSource.DataMember = "DBCPU";
             this.dBCPUBindingSource.DataSource = this.computerDBDataSet;
+            // 
+            // computerDBDataSet
+            // 
+            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
+            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dBCPUTableAdapter
             // 
@@ -157,11 +158,12 @@ namespace PSUCalculator
             this.Controls.Add(this.lblNewName);
             this.Controls.Add(this.txtNewClock);
             this.Controls.Add(this.txtNewTDP);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Edit_CPU";
             this.Text = "Edit CPU";
             this.Load += new System.EventHandler(this.Edit_CPU_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBCPUBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
