@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ComputerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DBComputer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="OwnerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Motherboard_Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GPU_Id" Type="int" Nullable="false" />
+    <Property Name="CPU_Id" Type="int" Nullable="false" />
+    <Property Name="RAM_Size" Type="int" Nullable="false" />
+    <Property Name="Drive_Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DBCPU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="base_clock" Type="int" />
+    <Property Name="TDP" Type="int" />
+  </EntityType>
+  <EntityType Name="DBGPU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="base_clock" Type="int" />
+    <Property Name="TDP" Type="int" />
+  </EntityType>
+  <Association Name="FK_Computer_CPU">
+    <End Role="DBCPU" Type="Self.DBCPU" Multiplicity="1" />
+    <End Role="DBComputer" Type="Self.DBComputer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBCPU">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DBComputer">
+        <PropertyRef Name="CPU_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Computer_GPU">
+    <End Role="DBGPU" Type="Self.DBGPU" Multiplicity="1" />
+    <End Role="DBComputer" Type="Self.DBComputer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBGPU">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DBComputer">
+        <PropertyRef Name="GPU_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ComputerDBModelStoreContainer">
+    <EntitySet Name="DBComputer" EntityType="Self.DBComputer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBCPU" EntityType="Self.DBCPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBGPU" EntityType="Self.DBGPU" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Computer_CPU" Association="Self.FK_Computer_CPU">
+      <End Role="DBCPU" EntitySet="DBCPU" />
+      <End Role="DBComputer" EntitySet="DBComputer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Computer_GPU" Association="Self.FK_Computer_GPU">
+      <End Role="DBGPU" EntitySet="DBGPU" />
+      <End Role="DBComputer" EntitySet="DBComputer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

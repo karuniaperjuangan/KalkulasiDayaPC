@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ComputerDBModelStoreContainer" CdmEntityContainer="ComputerDBEntities">
+    <EntitySetMapping Name="DBComputer">
+      <EntityTypeMapping TypeName="ComputerDBModel.DBComputer">
+        <MappingFragment StoreEntitySet="DBComputer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="Motherboard_Size" ColumnName="Motherboard_Size" />
+          <ScalarProperty Name="GPU_Id" ColumnName="GPU_Id" />
+          <ScalarProperty Name="CPU_Id" ColumnName="CPU_Id" />
+          <ScalarProperty Name="RAM_Size" ColumnName="RAM_Size" />
+          <ScalarProperty Name="Drive_Count" ColumnName="Drive_Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBCPU">
+      <EntityTypeMapping TypeName="ComputerDBModel.DBCPU">
+        <MappingFragment StoreEntitySet="DBCPU">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="base_clock" ColumnName="base_clock" />
+          <ScalarProperty Name="TDP" ColumnName="TDP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBGPU">
+      <EntityTypeMapping TypeName="ComputerDBModel.DBGPU">
+        <MappingFragment StoreEntitySet="DBGPU">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="base_clock" ColumnName="base_clock" />
+          <ScalarProperty Name="TDP" ColumnName="TDP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

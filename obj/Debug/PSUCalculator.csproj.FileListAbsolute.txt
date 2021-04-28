@@ -30,3 +30,12 @@ C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.csproj.CoreCompileInputs.cache
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.exe
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.pdb
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\bin\Debug\EntityFramework.dll
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\bin\Debug\EntityFramework.xml
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.csproj.CopyComplete
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Add_CPU.resources
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Add_GPU.resources
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Edit_CPU.resources
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Debug\PSUCalculator.Edit_GPU.resources

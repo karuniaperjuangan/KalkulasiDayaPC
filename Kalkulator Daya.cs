@@ -21,6 +21,10 @@ namespace PSUCalculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'computerDBDataSet.DBCPU' table. You can move, or remove it, as needed.
+            this.dBCPUTableAdapter.Fill(this.computerDBDataSet.DBCPU);
+            // TODO: This line of code loads data into the 'computerDBDataSet.DBGPU' table. You can move, or remove it, as needed.
+            this.dBGPUTableAdapter.Fill(this.computerDBDataSet.DBGPU);
 
         }
 
@@ -287,6 +291,89 @@ namespace PSUCalculator
                     MessageBox.Show("Clock harus berupa angka");
                 }
             }
+        }
+
+        private void txtGPUName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int selectedGPU;
+            if (txtGPUName.SelectedValue == null) return;
+            int.TryParse(txtGPUName.SelectedValue.ToString(), out selectedGPU);
+            using (var db = new ComputerDBEntities())
+            {
+
+                var query = from GPU in db.DBGPU
+                            where GPU.Id == selectedGPU
+                            select GPU;
+
+                foreach (var item in query)
+                {
+                    txtGPUTDP.Text = item.TDP.ToString();
+                    txtGPUClock.Text = item.base_clock.ToString();
+                }
+            }
+
+        }
+
+        private void txtProcName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedCPU;
+            if (txtProcName.SelectedValue == null) return;
+            int.TryParse(txtProcName.SelectedValue.ToString(),out selectedCPU);
+           using(var db = new ComputerDBEntities())
+            {
+                
+                 var query = from procie in db.DBCPU
+                            where procie.Id == selectedCPU
+                            select procie;
+
+                foreach(var item in query)
+                {
+                    txtProcTDP.Text = item.TDP.ToString();
+                    txtProcClock.Text = item.base_clock.ToString();
+                }  
+            }
+
+        }
+
+        private void txtProcTDP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var EditCPU = new Edit_CPU();
+            EditCPU.Show();
+        }
+
+        private void lblAddProc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var AddCPU = new Add_CPU();
+            AddCPU.Show();
+        }
+
+        private void lblReset_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var Resetted = new Form1();
+            Resetted.Show();
+            Hide();
+        }
+
+        private void lblAddGPU_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var AddGPU = new Add_GPU();
+            AddGPU.Show();
+        }
+
+        private void lblEditGPU_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var EditGPU = new Edit_GPU();
+            EditGPU.Show();
         }
     }
 }

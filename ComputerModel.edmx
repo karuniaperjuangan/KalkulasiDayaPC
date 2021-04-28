@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ComputerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DBComputer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Motherboard_Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GPU_Id" Type="int" Nullable="false" />
+          <Property Name="CPU_Id" Type="int" Nullable="false" />
+          <Property Name="RAM_Size" Type="int" Nullable="false" />
+          <Property Name="Drive_Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DBCPU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="base_clock" Type="int" />
+          <Property Name="TDP" Type="int" />
+        </EntityType>
+        <EntityType Name="DBGPU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="base_clock" Type="int" />
+          <Property Name="TDP" Type="int" />
+        </EntityType>
+        <Association Name="FK_Computer_CPU">
+          <End Role="DBCPU" Type="Self.DBCPU" Multiplicity="1" />
+          <End Role="DBComputer" Type="Self.DBComputer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBCPU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DBComputer">
+              <PropertyRef Name="CPU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Computer_GPU">
+          <End Role="DBGPU" Type="Self.DBGPU" Multiplicity="1" />
+          <End Role="DBComputer" Type="Self.DBComputer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBGPU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DBComputer">
+              <PropertyRef Name="GPU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ComputerDBModelStoreContainer">
+          <EntitySet Name="DBComputer" EntityType="Self.DBComputer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBCPU" EntityType="Self.DBCPU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBGPU" EntityType="Self.DBGPU" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Computer_CPU" Association="Self.FK_Computer_CPU">
+            <End Role="DBCPU" EntitySet="DBCPU" />
+            <End Role="DBComputer" EntitySet="DBComputer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Computer_GPU" Association="Self.FK_Computer_GPU">
+            <End Role="DBGPU" EntitySet="DBGPU" />
+            <End Role="DBComputer" EntitySet="DBComputer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ComputerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DBComputer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Motherboard_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GPU_Id" Type="Int32" Nullable="false" />
+          <Property Name="CPU_Id" Type="Int32" Nullable="false" />
+          <Property Name="RAM_Size" Type="Int32" Nullable="false" />
+          <Property Name="Drive_Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DBCPU" Relationship="Self.FK_Computer_CPU" FromRole="DBComputer" ToRole="DBCPU" />
+          <NavigationProperty Name="DBGPU" Relationship="Self.FK_Computer_GPU" FromRole="DBComputer" ToRole="DBGPU" />
+        </EntityType>
+        <EntityType Name="DBCPU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="base_clock" Type="Int32" />
+          <Property Name="TDP" Type="Int32" />
+          <NavigationProperty Name="DBComputer" Relationship="Self.FK_Computer_CPU" FromRole="DBCPU" ToRole="DBComputer" />
+        </EntityType>
+        <EntityType Name="DBGPU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="base_clock" Type="Int32" />
+          <Property Name="TDP" Type="Int32" />
+          <NavigationProperty Name="DBComputer" Relationship="Self.FK_Computer_GPU" FromRole="DBGPU" ToRole="DBComputer" />
+        </EntityType>
+        <Association Name="FK_Computer_CPU">
+          <End Role="DBCPU" Type="Self.DBCPU" Multiplicity="1" />
+          <End Role="DBComputer" Type="Self.DBComputer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBCPU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DBComputer">
+              <PropertyRef Name="CPU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Computer_GPU">
+          <End Role="DBGPU" Type="Self.DBGPU" Multiplicity="1" />
+          <End Role="DBComputer" Type="Self.DBComputer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBGPU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DBComputer">
+              <PropertyRef Name="GPU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ComputerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DBComputer" EntityType="Self.DBComputer" />
+          <EntitySet Name="DBCPU" EntityType="Self.DBCPU" />
+          <EntitySet Name="DBGPU" EntityType="Self.DBGPU" />
+          <AssociationSet Name="FK_Computer_CPU" Association="Self.FK_Computer_CPU">
+            <End Role="DBCPU" EntitySet="DBCPU" />
+            <End Role="DBComputer" EntitySet="DBComputer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Computer_GPU" Association="Self.FK_Computer_GPU">
+            <End Role="DBGPU" EntitySet="DBGPU" />
+            <End Role="DBComputer" EntitySet="DBComputer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ComputerDBModelStoreContainer" CdmEntityContainer="ComputerDBEntities">
+          <EntitySetMapping Name="DBComputer">
+            <EntityTypeMapping TypeName="ComputerDBModel.DBComputer">
+              <MappingFragment StoreEntitySet="DBComputer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="Motherboard_Size" ColumnName="Motherboard_Size" />
+                <ScalarProperty Name="GPU_Id" ColumnName="GPU_Id" />
+                <ScalarProperty Name="CPU_Id" ColumnName="CPU_Id" />
+                <ScalarProperty Name="RAM_Size" ColumnName="RAM_Size" />
+                <ScalarProperty Name="Drive_Count" ColumnName="Drive_Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBCPU">
+            <EntityTypeMapping TypeName="ComputerDBModel.DBCPU">
+              <MappingFragment StoreEntitySet="DBCPU">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="base_clock" ColumnName="base_clock" />
+                <ScalarProperty Name="TDP" ColumnName="TDP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBGPU">
+            <EntityTypeMapping TypeName="ComputerDBModel.DBGPU">
+              <MappingFragment StoreEntitySet="DBGPU">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="base_clock" ColumnName="base_clock" />
+                <ScalarProperty Name="TDP" ColumnName="TDP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
