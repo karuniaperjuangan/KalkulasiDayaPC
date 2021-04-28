@@ -63,5 +63,35 @@ namespace PSUCalculator
                 }
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedComputer;
+                if (txtProfile.SelectedValue == null) return;
+                int.TryParse(txtProfile.SelectedValue.ToString(), out selectedComputer);
+
+                using (var db = new ComputerDBEntities())
+                {
+                    var query = from Computer in db.DBComputer
+                                where Computer.Id == selectedComputer
+                                select Computer;
+
+                    foreach (var item in query)
+                    {
+                        db.DBComputer.Remove(item);
+                    }
+                    db.SaveChanges();
+                    MessageBox.Show("Profil Sukses Dihapus");
+                    Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gagal menghapus profil.");
+            }
+        }
     }
 }

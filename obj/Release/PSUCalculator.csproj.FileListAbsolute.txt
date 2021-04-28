@@ -19,3 +19,4 @@ C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Release\PSUCalculat
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Release\PSUCalculator.csproj.CopyComplete
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Release\PSUCalculator.exe
 C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Release\PSUCalculator.pdb
+C:\Users\Karunia Perjuangan\Source\Repos\KalkulasiDayaPC\obj\Release\PSUCalculator.csprojAssemblyReference.cache

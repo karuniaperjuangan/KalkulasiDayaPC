@@ -31,10 +31,10 @@ namespace PSUCalculator
         {
             this.components = new System.ComponentModel.Container();
             this.txtProfile = new System.Windows.Forms.ComboBox();
-            this.lblOwner = new System.Windows.Forms.Label();
-            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
-            this.computerDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dBComputerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.computerDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
+            this.lblOwner = new System.Windows.Forms.Label();
             this.dBComputerTableAdapter = new PSUCalculator.ComputerDBDataSetTableAdapters.DBComputerTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,9 +48,10 @@ namespace PSUCalculator
             this.lblRAM = new System.Windows.Forms.Label();
             this.lblDrive = new System.Windows.Forms.Label();
             this.lblOwnerName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSetBindingSource)).BeginInit();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dBComputerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // txtProfile
@@ -65,6 +66,21 @@ namespace PSUCalculator
             this.txtProfile.ValueMember = "Id";
             this.txtProfile.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // dBComputerBindingSource
+            // 
+            this.dBComputerBindingSource.DataMember = "DBComputer";
+            this.dBComputerBindingSource.DataSource = this.computerDBDataSetBindingSource;
+            // 
+            // computerDBDataSetBindingSource
+            // 
+            this.computerDBDataSetBindingSource.DataSource = this.computerDBDataSet;
+            this.computerDBDataSetBindingSource.Position = 0;
+            // 
+            // computerDBDataSet
+            // 
+            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
+            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lblOwner
             // 
             this.lblOwner.AutoSize = true;
@@ -73,21 +89,6 @@ namespace PSUCalculator
             this.lblOwner.Size = new System.Drawing.Size(61, 13);
             this.lblOwner.TabIndex = 45;
             this.lblOwner.Text = "Nama Profil";
-            // 
-            // computerDBDataSet
-            // 
-            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
-            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // computerDBDataSetBindingSource
-            // 
-            this.computerDBDataSetBindingSource.DataSource = this.computerDBDataSet;
-            this.computerDBDataSetBindingSource.Position = 0;
-            // 
-            // dBComputerBindingSource
-            // 
-            this.dBComputerBindingSource.DataMember = "DBComputer";
-            this.dBComputerBindingSource.DataSource = this.computerDBDataSetBindingSource;
             // 
             // dBComputerTableAdapter
             // 
@@ -202,11 +203,22 @@ namespace PSUCalculator
             this.lblOwnerName.TabIndex = 57;
             this.lblOwnerName.Text = "_";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(215, 264);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 58;
+            this.btnDelete.Text = "Hapus";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // CekProfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 299);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblOwnerName);
             this.Controls.Add(this.lblDrive);
             this.Controls.Add(this.lblRAM);
@@ -224,9 +236,9 @@ namespace PSUCalculator
             this.Name = "CekProfil";
             this.Text = "Cek Profil";
             this.Load += new System.EventHandler(this.CekProfil_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBComputerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +264,6 @@ namespace PSUCalculator
         private System.Windows.Forms.Label lblRAM;
         private System.Windows.Forms.Label lblDrive;
         private System.Windows.Forms.Label lblOwnerName;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
