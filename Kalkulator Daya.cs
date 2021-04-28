@@ -393,7 +393,7 @@ namespace PSUCalculator
                         OwnerName = txtOwnerName.Text,
                         Motherboard_Size = currentKomputer.MotherboardPC.Size,
                         GPU_Id = selectedGPU,
-                        CPU_Id =selectedCPU,
+                        CPU_Id = selectedCPU,
                         RAM_Size = currentKomputer.RAMPC.memory_size,
                         Drive_Count = currentKomputer.DrivePC.drive_count
                     };

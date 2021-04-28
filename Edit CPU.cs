@@ -116,7 +116,7 @@ namespace PSUCalculator
             }
             catch (Exception)
             {
-                MessageBox.Show("Gagal");
+                MessageBox.Show("Gagal menghapus, CPU dimiliki oleh suatu profil.");
             }
         }
     }

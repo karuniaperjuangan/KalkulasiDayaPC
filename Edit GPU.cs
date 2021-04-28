@@ -84,7 +84,7 @@ namespace PSUCalculator
                         db.DBGPU.Remove(item);
                     }
                     db.SaveChanges();
-                    MessageBox.Show("CPU Sukses Dihapus");
+                    MessageBox.Show("Gagal menghapus, GPU dimiliki oleh suatu profil.");
                     Close();
                 }
 
