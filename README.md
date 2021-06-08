@@ -1,4 +1,4 @@
-## Update :
+## Aplikasi Penghitung Daya PSU
 
 Hasil Proyek 1 semester berupa program yang mampu mengkalkulasikan daya yang harus disuplai oleh PSU serta menghitung tagihan PLN berdasarkan tagihan per April 2021.
 
