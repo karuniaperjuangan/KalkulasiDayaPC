@@ -17,6 +17,39 @@ namespace PSUCalculator
         public Form1()
         {
             InitializeComponent();
+            if(StaticStatus.ActiveMainForm != null)
+            {
+                StaticStatus.ActiveMainForm.Hide();
+            }
+            
+            StaticStatus.ActiveMainForm = this;
+        }
+
+        public void SetPreset(DBComputer item)
+        {
+            using(var db = new ComputerDBEntities())
+            {
+                EventArgs args = new EventArgs();
+                boxMoboSize.Text = item.Motherboard_Size;
+                button1_Click(item, args); //btnAddMobo
+                txtProcName.Text = (from CPU in db.DBCPU
+                                   where CPU.Id == item.CPU_Id
+                                   select CPU).FirstOrDefault().Name;
+                txtProcName_SelectedIndexChanged(item, args);
+                btnAddProcessor_Click(item, args);
+                txtGPUName.Text = (from GPU in db.DBGPU
+                                   where GPU.Id == item.GPU_Id
+                                   select GPU).FirstOrDefault().Name;
+                comboBox1_SelectedIndexChanged(item, args); //txtGPUName
+                btnAddGPU_Click(item, args);
+                txtRAMSize.Text = item.RAM_Size.ToString();
+                btnAddRAM_Click(item, args);
+                txtDriveSlot.Text = item.Drive_Count.ToString();
+                btnAddDrive_Click(item, args);
+                txtOwnerName.Text = item.OwnerName;
+            }
+
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,11 +73,11 @@ namespace PSUCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (boxMoboSize.Text.Equals("Micro ATX"))
+            if (boxMoboSize.Text.Equals("Micro-ATX"))
             {
                 currentKomputer.MotherboardPC = new MicroATX("Motherboard PC") as Motherboard;
             }
-            if (boxMoboSize.Text.Equals("Mini ITX"))
+            if (boxMoboSize.Text.Equals("Mini-ITX"))
             {
                 currentKomputer.MotherboardPC = new MiniITX("Motherboard PC") as Motherboard;
             }
@@ -56,12 +89,14 @@ namespace PSUCalculator
             {
                 currentKomputer.MotherboardPC = new XLATX("Motherboard PC") as Motherboard;
             }
-            if(currentKomputer.MotherboardPC == null)
+            if(!(sender is DBComputer)) //Do not show if it is called from Preset
             {
-                MessageBox.Show("Gagal menambahkan. Silahkan coba lagi");
+                if(currentKomputer.MotherboardPC == null)
+                {
+                    MessageBox.Show("Gagal menambahkan. Silahkan coba lagi");
+                }
+                else MessageBox.Show(currentKomputer.MotherboardPC.name + " Berhasil Ditambahkan");
             }
-            else MessageBox.Show(currentKomputer.MotherboardPC.name + " Berhasil Ditambahkan");
-            
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -90,8 +125,10 @@ namespace PSUCalculator
                     currentKomputer.ProcessorPC.TDP = Convert.ToDouble(txtProcTDP.Text);
                     currentKomputer.ProcessorPC.base_clock = Convert.ToDouble(txtProcClock.Text);
                     btnOCPro.Enabled = true;
-                    MessageBox.Show("Prosesor "+ currentKomputer.ProcessorPC.name + " Berhasil Ditambahkan");
-
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("Prosesor "+ currentKomputer.ProcessorPC.name + " Berhasil Ditambahkan");
+                    }
                 }
                 catch(Exception)
                 {
@@ -111,7 +148,10 @@ namespace PSUCalculator
                     currentKomputer.GraphicsPC.TDP = Convert.ToDouble(txtGPUTDP.Text);
                     currentKomputer.GraphicsPC.base_clock = Convert.ToDouble(txtGPUClock.Text);
                     btnOCGPU.Enabled = true;
-                    MessageBox.Show("GPU " + currentKomputer.GraphicsPC.name + " Berhasil Ditambahkan");
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("GPU " + currentKomputer.GraphicsPC.name + " Berhasil Ditambahkan");
+                    }
 
                 }
                 catch (Exception)
@@ -135,7 +175,11 @@ namespace PSUCalculator
                 {
                     currentKomputer.RAMPC = new RAM("RAM Komputer");
                     currentKomputer.RAMPC.memory_size = Int32.Parse(txtRAMSize.Text);
-                    MessageBox.Show("RAM "+currentKomputer.RAMPC.memory_size.ToString()+" GB berhasil ditambahkan");
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("RAM "+currentKomputer.RAMPC.memory_size.ToString()+" GB berhasil ditambahkan");
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -153,7 +197,11 @@ namespace PSUCalculator
                 {
                     currentKomputer.DrivePC = new Drive("RAM Komputer");
                     currentKomputer.DrivePC.drive_count = Int32.Parse(txtDriveSlot.Text);
-                    MessageBox.Show("SSD/HDD sejumlah "+ currentKomputer.DrivePC.drive_count.ToString() +" berhasil ditambahkan");
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("SSD/HDD sejumlah "+ currentKomputer.DrivePC.drive_count.ToString() +" berhasil ditambahkan");
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -400,10 +448,6 @@ namespace PSUCalculator
                     db.DBComputer.Add(newComputer);
                     db.SaveChanges();
                     MessageBox.Show("Profil sukses disimpan");
-
-                    var Resetted = new Form1();
-                    Resetted.Show();
-                    Hide();
                 }
             }
             catch
@@ -416,6 +460,11 @@ namespace PSUCalculator
         {
             var CekProfil = new CekProfil();
             CekProfil.Show();
+        }
+
+        private void txtOwnerName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

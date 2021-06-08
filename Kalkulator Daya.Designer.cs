@@ -111,8 +111,8 @@ namespace PSUCalculator
             // 
             this.boxMoboSize.FormattingEnabled = true;
             this.boxMoboSize.Items.AddRange(new object[] {
-            "Micro ATX",
-            "Mini ITX",
+            "Micro-ATX",
+            "Mini-ITX",
             "ATX",
             "XLATX"});
             this.boxMoboSize.Location = new System.Drawing.Point(37, 89);
@@ -538,6 +538,7 @@ namespace PSUCalculator
             this.txtOwnerName.Name = "txtOwnerName";
             this.txtOwnerName.Size = new System.Drawing.Size(121, 20);
             this.txtOwnerName.TabIndex = 45;
+            this.txtOwnerName.TextChanged += new System.EventHandler(this.txtOwnerName_TextChanged);
             // 
             // btnSaveProfile
             // 

@@ -49,6 +49,7 @@ namespace PSUCalculator
             this.lblDrive = new System.Windows.Forms.Label();
             this.lblOwnerName = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnLoadProfile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dBComputerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
@@ -213,11 +214,22 @@ namespace PSUCalculator
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnLoadProfile
+            // 
+            this.btnLoadProfile.Location = new System.Drawing.Point(12, 264);
+            this.btnLoadProfile.Name = "btnLoadProfile";
+            this.btnLoadProfile.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadProfile.TabIndex = 59;
+            this.btnLoadProfile.Text = "Ambil Profil";
+            this.btnLoadProfile.UseVisualStyleBackColor = true;
+            this.btnLoadProfile.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CekProfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 299);
+            this.Controls.Add(this.btnLoadProfile);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblOwnerName);
             this.Controls.Add(this.lblDrive);
@@ -265,5 +277,6 @@ namespace PSUCalculator
         private System.Windows.Forms.Label lblDrive;
         private System.Windows.Forms.Label lblOwnerName;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnLoadProfile;
     }
 }

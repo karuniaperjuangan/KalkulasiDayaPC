@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d5252b384e10434abbf11868b23bc479" Name="Diagram1">
-        <EntityTypeShape EntityType="ComputerDBModel.DBComputer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerDBModel.DBComputer" Width="1.5" PointX="3.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ComputerDBModel.DBCPU" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ComputerDBModel.DBGPU" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="ComputerDBModel.FK_Computer_CPU" ManuallyRouted="false" />
