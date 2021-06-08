@@ -40,21 +40,17 @@ namespace PSUCalculator
                     if (txtGPUName.SelectedValue == null) return;
                     int.TryParse(txtGPUName.SelectedValue.ToString(), out selectedGPU);
 
-                    using (var db = new ComputerDBEntities())
-                    {
-                        var query = from GPU in db.DBGPU
-                                    where GPU.Id == selectedGPU
-                                    select GPU;
+                    var db = new ComputerDBEntities();
+                    var item = (from GPU in db.DBGPU
+                               where GPU.Id == selectedGPU
+                               select GPU).FirstOrDefault();
 
-                        foreach (var item in query)
-                        {
-                            item.TDP = Convert.ToInt32(txtNewTDP.Text);
-                            item.base_clock = Convert.ToInt32(txtNewClock.Text);
-                        }
-                        db.SaveChanges();
-                        MessageBox.Show("GPU Sukses Diubah");
-                        Close();
-                    }
+                    item.TDP = Convert.ToInt32(txtNewTDP.Text);
+                    item.base_clock = Convert.ToInt32(txtNewClock.Text);
+                    db.SaveChanges();
+                    MessageBox.Show("GPU Sukses Diubah");
+                    db.Dispose();
+                    Close();
 
                 }
                 catch (Exception)

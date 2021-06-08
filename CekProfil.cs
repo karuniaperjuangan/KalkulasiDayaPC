@@ -37,22 +37,18 @@ namespace PSUCalculator
             using (var db = new ComputerDBEntities())
             {
 
-                var query = from profile in db.DBComputer
+                var item = (from profile in db.DBComputer
                             where profile.Id == selectedProfile
-                            select profile;
-
-                var item = query.FirstOrDefault();
+                            select profile).FirstOrDefault();
  
-                var GPUquery = from GPU in db.DBGPU
+                var gpu = (from GPU in db.DBGPU
                                    where GPU.Id == item.GPU_Id
-                                   select GPU;
-                DBGPU gpu = GPUquery.FirstOrDefault();
+                                   select GPU).FirstOrDefault();
 
-                var CPUquery = from CPU in db.DBCPU
+                var cpu = (from CPU in db.DBCPU
                                    where CPU.Id == item.CPU_Id
-                                   select CPU;
+                                   select CPU).FirstOrDefault();
 
-                DBCPU cpu = CPUquery.FirstOrDefault();
 
                 lblOwnerName.Text = item.OwnerName;
                 lblMotherboard.Text = item.Motherboard_Size;
