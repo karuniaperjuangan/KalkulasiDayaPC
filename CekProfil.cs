@@ -94,7 +94,7 @@ namespace PSUCalculator
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //AmbilProfil
         {
             try
             {
@@ -108,8 +108,7 @@ namespace PSUCalculator
                                 where Computer.Id == selectedComputer
                                 select Computer).FirstOrDefault();
 
-                    Form1 FormWithPreset = new Form1();
-                    FormWithPreset.Show();
+                    Form1 FormWithPreset = StaticStatus.ActiveMainForm;
                     FormWithPreset.SetPreset(item);
                     Close();
                 }

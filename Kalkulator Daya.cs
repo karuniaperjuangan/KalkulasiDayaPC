@@ -407,9 +407,7 @@ namespace PSUCalculator
 
         private void lblReset_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var Resetted = new Form1();
-            Resetted.Show();
-            Hide();
+            Application.Restart();
         }
 
         private void lblAddGPU_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
