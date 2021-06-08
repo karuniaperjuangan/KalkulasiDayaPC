@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,9 +47,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>green-power-button-symbol-icon-20.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,7 +73,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add CPU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add CPU.Designer.cs">
+      <DependentUpon>Add CPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add_GPU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_GPU.Designer.cs">
+      <DependentUpon>Add_GPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CekProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CekProfil.Designer.cs">
+      <DependentUpon>CekProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComputerDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComputerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComputerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComputerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBComputer.cs">
+      <DependentUpon>ComputerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBCPU.cs">
+      <DependentUpon>ComputerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBGPU.cs">
+      <DependentUpon>ComputerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Drive.cs" />
+    <Compile Include="Edit CPU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit CPU.Designer.cs">
+      <DependentUpon>Edit CPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit GPU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit GPU.Designer.cs">
+      <DependentUpon>Edit GPU.cs</DependentUpon>
+    </Compile>
     <Compile Include="GPU.cs" />
     <Compile Include="CPU.cs" />
     <Compile Include="Komponen.cs" />
@@ -78,6 +149,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAM.cs" />
     <Compile Include="PowerFormula.cs" />
+    <Compile Include="StaticStatus.cs" />
+    <EmbeddedResource Include="Add CPU.resx">
+      <DependentUpon>Add CPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add_GPU.resx">
+      <DependentUpon>Add_GPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CekProfil.resx">
+      <DependentUpon>CekProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit CPU.resx">
+      <DependentUpon>Edit CPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit GPU.resx">
+      <DependentUpon>Edit GPU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kalkulator Daya.resx">
       <DependentUpon>Kalkulator Daya.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +177,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="ComputerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ComputerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ComputerDBDataSet.xsc">
+      <DependentUpon>ComputerDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ComputerDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ComputerDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ComputerDBDataSet.xss">
+      <DependentUpon>ComputerDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ComputerModel.edmx.diagram">
+      <DependentUpon>ComputerModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,6 +220,32 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ComputerDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ComputerDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ComputerDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="ComputerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ComputerModel.Context.cs</LastGenOutput>
+      <DependentUpon>ComputerModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="ComputerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ComputerModel.edmx</DependentUpon>
+      <LastGenOutput>ComputerModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="green-power-button-symbol-icon-20.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

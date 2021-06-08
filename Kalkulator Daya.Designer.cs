@@ -29,11 +29,12 @@ namespace PSUCalculator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnAddMobo = new System.Windows.Forms.Button();
             this.lblMotherboard = new System.Windows.Forms.Label();
             this.boxMoboSize = new System.Windows.Forms.ComboBox();
             this.lblProName = new System.Windows.Forms.Label();
-            this.txtProcName = new System.Windows.Forms.TextBox();
             this.btnAddProcessor = new System.Windows.Forms.Button();
             this.lblProClock = new System.Windows.Forms.Label();
             this.txtProcClock = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@ namespace PSUCalculator
             this.txtGPUClock = new System.Windows.Forms.TextBox();
             this.lblGPUClock = new System.Windows.Forms.Label();
             this.btnAddGPU = new System.Windows.Forms.Button();
-            this.txtGPUName = new System.Windows.Forms.TextBox();
             this.lblRAM = new System.Windows.Forms.Label();
             this.btnAddRAM = new System.Windows.Forms.Button();
             this.txtRAMSize = new System.Windows.Forms.TextBox();
@@ -66,6 +66,25 @@ namespace PSUCalculator
             this.txtGPUBoostClock = new System.Windows.Forms.TextBox();
             this.btnOCPro = new System.Windows.Forms.Button();
             this.btnOCGPU = new System.Windows.Forms.Button();
+            this.txtGPUName = new System.Windows.Forms.ComboBox();
+            this.dBGPUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.computerDBDataSet = new PSUCalculator.ComputerDBDataSet();
+            this.dBGPUTableAdapter = new PSUCalculator.ComputerDBDataSetTableAdapters.DBGPUTableAdapter();
+            this.txtProcName = new System.Windows.Forms.ComboBox();
+            this.dBCPUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBCPUTableAdapter = new PSUCalculator.ComputerDBDataSetTableAdapters.DBCPUTableAdapter();
+            this.lblEditProc = new System.Windows.Forms.LinkLabel();
+            this.lblEditGPU = new System.Windows.Forms.LinkLabel();
+            this.lblAddProc = new System.Windows.Forms.LinkLabel();
+            this.lblAddGPU = new System.Windows.Forms.LinkLabel();
+            this.lblReset = new System.Windows.Forms.LinkLabel();
+            this.lblOwner = new System.Windows.Forms.Label();
+            this.txtOwnerName = new System.Windows.Forms.TextBox();
+            this.btnSaveProfile = new System.Windows.Forms.Button();
+            this.btnProfileCheck = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dBGPUBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCPUBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddMobo
@@ -92,8 +111,8 @@ namespace PSUCalculator
             // 
             this.boxMoboSize.FormattingEnabled = true;
             this.boxMoboSize.Items.AddRange(new object[] {
-            "Micro ATX",
-            "Mini ITX",
+            "Micro-ATX",
+            "Mini-ITX",
             "ATX",
             "XLATX"});
             this.boxMoboSize.Location = new System.Drawing.Point(37, 89);
@@ -112,16 +131,9 @@ namespace PSUCalculator
             this.lblProName.Text = "Apa Prosesor/CPUmu?";
             this.lblProName.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // txtProcName
-            // 
-            this.txtProcName.Location = new System.Drawing.Point(37, 153);
-            this.txtProcName.Name = "txtProcName";
-            this.txtProcName.Size = new System.Drawing.Size(121, 20);
-            this.txtProcName.TabIndex = 4;
-            // 
             // btnAddProcessor
             // 
-            this.btnAddProcessor.Location = new System.Drawing.Point(376, 151);
+            this.btnAddProcessor.Location = new System.Drawing.Point(520, 152);
             this.btnAddProcessor.Name = "btnAddProcessor";
             this.btnAddProcessor.Size = new System.Drawing.Size(75, 23);
             this.btnAddProcessor.TabIndex = 5;
@@ -132,17 +144,18 @@ namespace PSUCalculator
             // lblProClock
             // 
             this.lblProClock.AutoSize = true;
-            this.lblProClock.Location = new System.Drawing.Point(291, 127);
+            this.lblProClock.Location = new System.Drawing.Point(435, 128);
             this.lblProClock.Name = "lblProClock";
-            this.lblProClock.Size = new System.Drawing.Size(111, 13);
+            this.lblProClock.Size = new System.Drawing.Size(88, 13);
             this.lblProClock.TabIndex = 6;
-            this.lblProClock.Text = "Baseclocknya? (MHz)";
+            this.lblProClock.Text = "Baseclock (MHz)";
             this.lblProClock.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtProcClock
             // 
-            this.txtProcClock.Location = new System.Drawing.Point(294, 154);
+            this.txtProcClock.Location = new System.Drawing.Point(438, 155);
             this.txtProcClock.Name = "txtProcClock";
+            this.txtProcClock.ReadOnly = true;
             this.txtProcClock.Size = new System.Drawing.Size(75, 20);
             this.txtProcClock.TabIndex = 7;
             // 
@@ -157,68 +170,65 @@ namespace PSUCalculator
             // 
             // txtProcTDP
             // 
-            this.txtProcTDP.Location = new System.Drawing.Point(164, 153);
+            this.txtProcTDP.Location = new System.Drawing.Point(308, 154);
             this.txtProcTDP.Name = "txtProcTDP";
+            this.txtProcTDP.ReadOnly = true;
             this.txtProcTDP.Size = new System.Drawing.Size(121, 20);
             this.txtProcTDP.TabIndex = 10;
+            this.txtProcTDP.TextChanged += new System.EventHandler(this.txtProcTDP_TextChanged);
             // 
             // lblProTDP
             // 
             this.lblProTDP.AutoSize = true;
-            this.lblProTDP.Location = new System.Drawing.Point(161, 127);
+            this.lblProTDP.Location = new System.Drawing.Point(305, 128);
             this.lblProTDP.Name = "lblProTDP";
-            this.lblProTDP.Size = new System.Drawing.Size(124, 13);
+            this.lblProTDP.Size = new System.Drawing.Size(61, 13);
             this.lblProTDP.TabIndex = 9;
-            this.lblProTDP.Text = "Berapa TDP-nya? (Watt)";
+            this.lblProTDP.Text = "TDP (Watt)";
             // 
             // txtGPUTDP
             // 
-            this.txtGPUTDP.Location = new System.Drawing.Point(164, 217);
+            this.txtGPUTDP.Location = new System.Drawing.Point(308, 218);
             this.txtGPUTDP.Name = "txtGPUTDP";
+            this.txtGPUTDP.ReadOnly = true;
             this.txtGPUTDP.Size = new System.Drawing.Size(121, 20);
             this.txtGPUTDP.TabIndex = 16;
             // 
             // lblGPUTDP
             // 
             this.lblGPUTDP.AutoSize = true;
-            this.lblGPUTDP.Location = new System.Drawing.Point(161, 191);
+            this.lblGPUTDP.Location = new System.Drawing.Point(305, 192);
             this.lblGPUTDP.Name = "lblGPUTDP";
-            this.lblGPUTDP.Size = new System.Drawing.Size(124, 13);
+            this.lblGPUTDP.Size = new System.Drawing.Size(61, 13);
             this.lblGPUTDP.TabIndex = 15;
-            this.lblGPUTDP.Text = "Berapa TDP-nya? (Watt)";
+            this.lblGPUTDP.Text = "TDP (Watt)";
             // 
             // txtGPUClock
             // 
-            this.txtGPUClock.Location = new System.Drawing.Point(294, 218);
+            this.txtGPUClock.Location = new System.Drawing.Point(438, 219);
             this.txtGPUClock.Name = "txtGPUClock";
+            this.txtGPUClock.ReadOnly = true;
             this.txtGPUClock.Size = new System.Drawing.Size(75, 20);
             this.txtGPUClock.TabIndex = 14;
             // 
             // lblGPUClock
             // 
             this.lblGPUClock.AutoSize = true;
-            this.lblGPUClock.Location = new System.Drawing.Point(291, 191);
+            this.lblGPUClock.Location = new System.Drawing.Point(435, 192);
             this.lblGPUClock.Name = "lblGPUClock";
-            this.lblGPUClock.Size = new System.Drawing.Size(111, 13);
+            this.lblGPUClock.Size = new System.Drawing.Size(88, 13);
             this.lblGPUClock.TabIndex = 13;
-            this.lblGPUClock.Text = "Baseclocknya? (MHz)";
+            this.lblGPUClock.Text = "Baseclock (MHz)";
             // 
             // btnAddGPU
             // 
-            this.btnAddGPU.Location = new System.Drawing.Point(376, 215);
+            this.btnAddGPU.Location = new System.Drawing.Point(520, 216);
             this.btnAddGPU.Name = "btnAddGPU";
             this.btnAddGPU.Size = new System.Drawing.Size(75, 23);
             this.btnAddGPU.TabIndex = 12;
             this.btnAddGPU.Text = "Tambahkan";
             this.btnAddGPU.UseVisualStyleBackColor = true;
             this.btnAddGPU.Click += new System.EventHandler(this.btnAddGPU_Click);
-            // 
-            // txtGPUName
-            // 
-            this.txtGPUName.Location = new System.Drawing.Point(37, 217);
-            this.txtGPUName.Name = "txtGPUName";
-            this.txtGPUName.Size = new System.Drawing.Size(121, 20);
-            this.txtGPUName.TabIndex = 11;
             // 
             // lblRAM
             // 
@@ -358,7 +368,7 @@ namespace PSUCalculator
             // lblProBoostClock
             // 
             this.lblProBoostClock.AutoSize = true;
-            this.lblProBoostClock.Location = new System.Drawing.Point(460, 128);
+            this.lblProBoostClock.Location = new System.Drawing.Point(604, 129);
             this.lblProBoostClock.Name = "lblProBoostClock";
             this.lblProBoostClock.Size = new System.Drawing.Size(178, 13);
             this.lblProBoostClock.TabIndex = 31;
@@ -368,7 +378,7 @@ namespace PSUCalculator
             // lblGPUBoostClock
             // 
             this.lblGPUBoostClock.AutoSize = true;
-            this.lblGPUBoostClock.Location = new System.Drawing.Point(460, 191);
+            this.lblGPUBoostClock.Location = new System.Drawing.Point(604, 192);
             this.lblGPUBoostClock.Name = "lblGPUBoostClock";
             this.lblGPUBoostClock.Size = new System.Drawing.Size(179, 13);
             this.lblGPUBoostClock.TabIndex = 32;
@@ -377,14 +387,14 @@ namespace PSUCalculator
             // 
             // txtProBoostClock
             // 
-            this.txtProBoostClock.Location = new System.Drawing.Point(463, 154);
+            this.txtProBoostClock.Location = new System.Drawing.Point(607, 155);
             this.txtProBoostClock.Name = "txtProBoostClock";
             this.txtProBoostClock.Size = new System.Drawing.Size(113, 20);
             this.txtProBoostClock.TabIndex = 33;
             // 
             // txtGPUBoostClock
             // 
-            this.txtGPUBoostClock.Location = new System.Drawing.Point(463, 215);
+            this.txtGPUBoostClock.Location = new System.Drawing.Point(607, 216);
             this.txtGPUBoostClock.Name = "txtGPUBoostClock";
             this.txtGPUBoostClock.Size = new System.Drawing.Size(113, 20);
             this.txtGPUBoostClock.TabIndex = 34;
@@ -392,7 +402,7 @@ namespace PSUCalculator
             // btnOCPro
             // 
             this.btnOCPro.Enabled = false;
-            this.btnOCPro.Location = new System.Drawing.Point(582, 151);
+            this.btnOCPro.Location = new System.Drawing.Point(726, 152);
             this.btnOCPro.Name = "btnOCPro";
             this.btnOCPro.Size = new System.Drawing.Size(50, 23);
             this.btnOCPro.TabIndex = 35;
@@ -403,7 +413,7 @@ namespace PSUCalculator
             // btnOCGPU
             // 
             this.btnOCGPU.Enabled = false;
-            this.btnOCGPU.Location = new System.Drawing.Point(582, 214);
+            this.btnOCGPU.Location = new System.Drawing.Point(726, 215);
             this.btnOCGPU.Name = "btnOCGPU";
             this.btnOCGPU.Size = new System.Drawing.Size(50, 23);
             this.btnOCGPU.TabIndex = 36;
@@ -411,11 +421,161 @@ namespace PSUCalculator
             this.btnOCGPU.UseVisualStyleBackColor = true;
             this.btnOCGPU.Click += new System.EventHandler(this.btnOCGPU_Click);
             // 
+            // txtGPUName
+            // 
+            this.txtGPUName.DataSource = this.dBGPUBindingSource;
+            this.txtGPUName.DisplayMember = "Name";
+            this.txtGPUName.FormattingEnabled = true;
+            this.txtGPUName.Location = new System.Drawing.Point(37, 215);
+            this.txtGPUName.Name = "txtGPUName";
+            this.txtGPUName.Size = new System.Drawing.Size(254, 21);
+            this.txtGPUName.TabIndex = 37;
+            this.txtGPUName.ValueMember = "Id";
+            this.txtGPUName.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            // 
+            // dBGPUBindingSource
+            // 
+            this.dBGPUBindingSource.DataMember = "DBGPU";
+            this.dBGPUBindingSource.DataSource = this.computerDBDataSet;
+            // 
+            // computerDBDataSet
+            // 
+            this.computerDBDataSet.DataSetName = "ComputerDBDataSet";
+            this.computerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dBGPUTableAdapter
+            // 
+            this.dBGPUTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtProcName
+            // 
+            this.txtProcName.DataSource = this.dBCPUBindingSource;
+            this.txtProcName.DisplayMember = "Name";
+            this.txtProcName.FormattingEnabled = true;
+            this.txtProcName.Location = new System.Drawing.Point(37, 153);
+            this.txtProcName.Name = "txtProcName";
+            this.txtProcName.Size = new System.Drawing.Size(254, 21);
+            this.txtProcName.TabIndex = 38;
+            this.txtProcName.ValueMember = "Id";
+            this.txtProcName.SelectedIndexChanged += new System.EventHandler(this.txtProcName_SelectedIndexChanged);
+            // 
+            // dBCPUBindingSource
+            // 
+            this.dBCPUBindingSource.DataMember = "DBCPU";
+            this.dBCPUBindingSource.DataSource = this.computerDBDataSet;
+            // 
+            // dBCPUTableAdapter
+            // 
+            this.dBCPUTableAdapter.ClearBeforeFill = true;
+            // 
+            // lblEditProc
+            // 
+            this.lblEditProc.AutoSize = true;
+            this.lblEditProc.Location = new System.Drawing.Point(189, 129);
+            this.lblEditProc.Name = "lblEditProc";
+            this.lblEditProc.Size = new System.Drawing.Size(25, 13);
+            this.lblEditProc.TabIndex = 39;
+            this.lblEditProc.TabStop = true;
+            this.lblEditProc.Text = "Edit";
+            this.lblEditProc.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lblEditGPU
+            // 
+            this.lblEditGPU.AutoSize = true;
+            this.lblEditGPU.Location = new System.Drawing.Point(147, 192);
+            this.lblEditGPU.Name = "lblEditGPU";
+            this.lblEditGPU.Size = new System.Drawing.Size(25, 13);
+            this.lblEditGPU.TabIndex = 40;
+            this.lblEditGPU.TabStop = true;
+            this.lblEditGPU.Text = "Edit";
+            this.lblEditGPU.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEditGPU_LinkClicked);
+            // 
+            // lblAddProc
+            // 
+            this.lblAddProc.AutoSize = true;
+            this.lblAddProc.Location = new System.Drawing.Point(157, 129);
+            this.lblAddProc.Name = "lblAddProc";
+            this.lblAddProc.Size = new System.Drawing.Size(26, 13);
+            this.lblAddProc.TabIndex = 41;
+            this.lblAddProc.TabStop = true;
+            this.lblAddProc.Text = "Add";
+            this.lblAddProc.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAddProc_LinkClicked);
+            // 
+            // lblAddGPU
+            // 
+            this.lblAddGPU.AutoSize = true;
+            this.lblAddGPU.Location = new System.Drawing.Point(115, 191);
+            this.lblAddGPU.Name = "lblAddGPU";
+            this.lblAddGPU.Size = new System.Drawing.Size(26, 13);
+            this.lblAddGPU.TabIndex = 42;
+            this.lblAddGPU.TabStop = true;
+            this.lblAddGPU.Text = "Add";
+            this.lblAddGPU.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAddGPU_LinkClicked);
+            // 
+            // lblReset
+            // 
+            this.lblReset.AutoSize = true;
+            this.lblReset.Location = new System.Drawing.Point(27, 548);
+            this.lblReset.Name = "lblReset";
+            this.lblReset.Size = new System.Drawing.Size(346, 13);
+            this.lblReset.TabIndex = 43;
+            this.lblReset.TabStop = true;
+            this.lblReset.Text = "Reset (Lakukan setiap penambahan dan penghapusan CPU atau GPU)";
+            this.lblReset.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblReset_LinkClicked);
+            // 
+            // lblOwner
+            // 
+            this.lblOwner.AutoSize = true;
+            this.lblOwner.Location = new System.Drawing.Point(27, 440);
+            this.lblOwner.Name = "lblOwner";
+            this.lblOwner.Size = new System.Drawing.Size(61, 13);
+            this.lblOwner.TabIndex = 44;
+            this.lblOwner.Text = "Nama Profil";
+            // 
+            // txtOwnerName
+            // 
+            this.txtOwnerName.Location = new System.Drawing.Point(30, 465);
+            this.txtOwnerName.Name = "txtOwnerName";
+            this.txtOwnerName.Size = new System.Drawing.Size(121, 20);
+            this.txtOwnerName.TabIndex = 45;
+            this.txtOwnerName.TextChanged += new System.EventHandler(this.txtOwnerName_TextChanged);
+            // 
+            // btnSaveProfile
+            // 
+            this.btnSaveProfile.Location = new System.Drawing.Point(166, 465);
+            this.btnSaveProfile.Name = "btnSaveProfile";
+            this.btnSaveProfile.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveProfile.TabIndex = 46;
+            this.btnSaveProfile.Text = "Save PC";
+            this.btnSaveProfile.UseVisualStyleBackColor = true;
+            this.btnSaveProfile.Click += new System.EventHandler(this.btnSaveProfile_Click);
+            // 
+            // btnProfileCheck
+            // 
+            this.btnProfileCheck.Location = new System.Drawing.Point(30, 504);
+            this.btnProfileCheck.Name = "btnProfileCheck";
+            this.btnProfileCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnProfileCheck.TabIndex = 47;
+            this.btnProfileCheck.Text = "Lihat Profil";
+            this.btnProfileCheck.UseVisualStyleBackColor = true;
+            this.btnProfileCheck.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 483);
+            this.ClientSize = new System.Drawing.Size(797, 570);
+            this.Controls.Add(this.btnProfileCheck);
+            this.Controls.Add(this.btnSaveProfile);
+            this.Controls.Add(this.txtOwnerName);
+            this.Controls.Add(this.lblOwner);
+            this.Controls.Add(this.lblReset);
+            this.Controls.Add(this.lblAddGPU);
+            this.Controls.Add(this.lblAddProc);
+            this.Controls.Add(this.lblEditGPU);
+            this.Controls.Add(this.lblEditProc);
+            this.Controls.Add(this.txtProcName);
+            this.Controls.Add(this.txtGPUName);
             this.Controls.Add(this.btnOCGPU);
             this.Controls.Add(this.btnOCPro);
             this.Controls.Add(this.txtGPUBoostClock);
@@ -441,21 +601,23 @@ namespace PSUCalculator
             this.Controls.Add(this.txtGPUClock);
             this.Controls.Add(this.lblGPUClock);
             this.Controls.Add(this.btnAddGPU);
-            this.Controls.Add(this.txtGPUName);
             this.Controls.Add(this.txtProcTDP);
             this.Controls.Add(this.lblProTDP);
             this.Controls.Add(this.lblGPUName);
             this.Controls.Add(this.txtProcClock);
             this.Controls.Add(this.lblProClock);
             this.Controls.Add(this.btnAddProcessor);
-            this.Controls.Add(this.txtProcName);
             this.Controls.Add(this.lblProName);
             this.Controls.Add(this.boxMoboSize);
             this.Controls.Add(this.lblMotherboard);
             this.Controls.Add(this.btnAddMobo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Penghitung Daya PC";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dBGPUBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.computerDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCPUBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,7 +629,6 @@ namespace PSUCalculator
         private System.Windows.Forms.Label lblMotherboard;
         private System.Windows.Forms.ComboBox boxMoboSize;
         private System.Windows.Forms.Label lblProName;
-        private System.Windows.Forms.TextBox txtProcName;
         private System.Windows.Forms.Button btnAddProcessor;
         private System.Windows.Forms.Label lblProClock;
         private System.Windows.Forms.TextBox txtProcClock;
@@ -479,7 +640,6 @@ namespace PSUCalculator
         private System.Windows.Forms.TextBox txtGPUClock;
         private System.Windows.Forms.Label lblGPUClock;
         private System.Windows.Forms.Button btnAddGPU;
-        private System.Windows.Forms.TextBox txtGPUName;
         private System.Windows.Forms.Label lblRAM;
         private System.Windows.Forms.Button btnAddRAM;
         private System.Windows.Forms.TextBox txtRAMSize;
@@ -500,6 +660,22 @@ namespace PSUCalculator
         private System.Windows.Forms.TextBox txtGPUBoostClock;
         private System.Windows.Forms.Button btnOCPro;
         private System.Windows.Forms.Button btnOCGPU;
+        private System.Windows.Forms.ComboBox txtGPUName;
+        private ComputerDBDataSet computerDBDataSet;
+        private System.Windows.Forms.BindingSource dBGPUBindingSource;
+        private ComputerDBDataSetTableAdapters.DBGPUTableAdapter dBGPUTableAdapter;
+        private System.Windows.Forms.ComboBox txtProcName;
+        private System.Windows.Forms.BindingSource dBCPUBindingSource;
+        private ComputerDBDataSetTableAdapters.DBCPUTableAdapter dBCPUTableAdapter;
+        private System.Windows.Forms.LinkLabel lblEditProc;
+        private System.Windows.Forms.LinkLabel lblEditGPU;
+        private System.Windows.Forms.LinkLabel lblAddProc;
+        private System.Windows.Forms.LinkLabel lblAddGPU;
+        private System.Windows.Forms.LinkLabel lblReset;
+        private System.Windows.Forms.Label lblOwner;
+        private System.Windows.Forms.TextBox txtOwnerName;
+        private System.Windows.Forms.Button btnSaveProfile;
+        private System.Windows.Forms.Button btnProfileCheck;
     }
 }
 

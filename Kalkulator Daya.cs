@@ -17,10 +17,47 @@ namespace PSUCalculator
         public Form1()
         {
             InitializeComponent();
+            if(StaticStatus.ActiveMainForm != null)
+            {
+                StaticStatus.ActiveMainForm.Hide();
+            }
+            
+            StaticStatus.ActiveMainForm = this;
+        }
+
+        public void SetPreset(DBComputer item)
+        {
+            using(var db = new ComputerDBEntities())
+            {
+                EventArgs args = new EventArgs();
+                boxMoboSize.Text = item.Motherboard_Size;
+                button1_Click(item, args); //btnAddMobo
+                txtProcName.Text = (from CPU in db.DBCPU
+                                   where CPU.Id == item.CPU_Id
+                                   select CPU).FirstOrDefault().Name;
+                txtProcName_SelectedIndexChanged(item, args);
+                btnAddProcessor_Click(item, args);
+                txtGPUName.Text = (from GPU in db.DBGPU
+                                   where GPU.Id == item.GPU_Id
+                                   select GPU).FirstOrDefault().Name;
+                comboBox1_SelectedIndexChanged(item, args); //txtGPUName
+                btnAddGPU_Click(item, args);
+                txtRAMSize.Text = item.RAM_Size.ToString();
+                btnAddRAM_Click(item, args);
+                txtDriveSlot.Text = item.Drive_Count.ToString();
+                btnAddDrive_Click(item, args);
+                txtOwnerName.Text = item.OwnerName;
+            }
+
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'computerDBDataSet.DBCPU' table. You can move, or remove it, as needed.
+            this.dBCPUTableAdapter.Fill(this.computerDBDataSet.DBCPU);
+            // TODO: This line of code loads data into the 'computerDBDataSet.DBGPU' table. You can move, or remove it, as needed.
+            this.dBGPUTableAdapter.Fill(this.computerDBDataSet.DBGPU);
 
         }
 
@@ -36,11 +73,11 @@ namespace PSUCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (boxMoboSize.Text.Equals("Micro ATX"))
+            if (boxMoboSize.Text.Equals("Micro-ATX"))
             {
                 currentKomputer.MotherboardPC = new MicroATX("Motherboard PC") as Motherboard;
             }
-            if (boxMoboSize.Text.Equals("Mini ITX"))
+            if (boxMoboSize.Text.Equals("Mini-ITX"))
             {
                 currentKomputer.MotherboardPC = new MiniITX("Motherboard PC") as Motherboard;
             }
@@ -52,12 +89,14 @@ namespace PSUCalculator
             {
                 currentKomputer.MotherboardPC = new XLATX("Motherboard PC") as Motherboard;
             }
-            if(currentKomputer.MotherboardPC == null)
+            if(!(sender is DBComputer)) //Do not show if it is called from Preset
             {
-                MessageBox.Show("Gagal menambahkan. Silahkan coba lagi");
+                if(currentKomputer.MotherboardPC == null)
+                {
+                    MessageBox.Show("Gagal menambahkan. Silahkan coba lagi");
+                }
+                else MessageBox.Show(currentKomputer.MotherboardPC.name + " Berhasil Ditambahkan");
             }
-            else MessageBox.Show(currentKomputer.MotherboardPC.name + " Berhasil Ditambahkan");
-            
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -86,8 +125,10 @@ namespace PSUCalculator
                     currentKomputer.ProcessorPC.TDP = Convert.ToDouble(txtProcTDP.Text);
                     currentKomputer.ProcessorPC.base_clock = Convert.ToDouble(txtProcClock.Text);
                     btnOCPro.Enabled = true;
-                    MessageBox.Show("Prosesor "+ currentKomputer.ProcessorPC.name + " Berhasil Ditambahkan");
-
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("Prosesor "+ currentKomputer.ProcessorPC.name + " Berhasil Ditambahkan");
+                    }
                 }
                 catch(Exception)
                 {
@@ -107,7 +148,10 @@ namespace PSUCalculator
                     currentKomputer.GraphicsPC.TDP = Convert.ToDouble(txtGPUTDP.Text);
                     currentKomputer.GraphicsPC.base_clock = Convert.ToDouble(txtGPUClock.Text);
                     btnOCGPU.Enabled = true;
-                    MessageBox.Show("GPU " + currentKomputer.GraphicsPC.name + " Berhasil Ditambahkan");
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("GPU " + currentKomputer.GraphicsPC.name + " Berhasil Ditambahkan");
+                    }
 
                 }
                 catch (Exception)
@@ -131,7 +175,11 @@ namespace PSUCalculator
                 {
                     currentKomputer.RAMPC = new RAM("RAM Komputer");
                     currentKomputer.RAMPC.memory_size = Int32.Parse(txtRAMSize.Text);
-                    MessageBox.Show("RAM "+currentKomputer.RAMPC.memory_size.ToString()+" GB berhasil ditambahkan");
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("RAM "+currentKomputer.RAMPC.memory_size.ToString()+" GB berhasil ditambahkan");
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -149,7 +197,11 @@ namespace PSUCalculator
                 {
                     currentKomputer.DrivePC = new Drive("RAM Komputer");
                     currentKomputer.DrivePC.drive_count = Int32.Parse(txtDriveSlot.Text);
-                    MessageBox.Show("SSD/HDD sejumlah "+ currentKomputer.DrivePC.drive_count.ToString() +" berhasil ditambahkan");
+                    if (!(sender is DBComputer)) //Do not show if it is called from Preset
+                    {
+                        MessageBox.Show("SSD/HDD sejumlah "+ currentKomputer.DrivePC.drive_count.ToString() +" berhasil ditambahkan");
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -287,6 +339,132 @@ namespace PSUCalculator
                     MessageBox.Show("Clock harus berupa angka");
                 }
             }
+        }
+
+        private void txtGPUName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int selectedGPU;
+            if (txtGPUName.SelectedValue == null) return;
+            int.TryParse(txtGPUName.SelectedValue.ToString(), out selectedGPU);
+            using (var db = new ComputerDBEntities())
+            {
+
+                var query = from GPU in db.DBGPU
+                            where GPU.Id == selectedGPU
+                            select GPU;
+
+                foreach (var item in query)
+                {
+                    txtGPUTDP.Text = item.TDP.ToString();
+                    txtGPUClock.Text = item.base_clock.ToString();
+                }
+            }
+
+        }
+
+        private void txtProcName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedCPU;
+            if (txtProcName.SelectedValue == null) return;
+            int.TryParse(txtProcName.SelectedValue.ToString(),out selectedCPU);
+           using(var db = new ComputerDBEntities())
+            {
+                
+                 var query = from procie in db.DBCPU
+                            where procie.Id == selectedCPU
+                            select procie;
+
+                foreach(var item in query)
+                {
+                    txtProcTDP.Text = item.TDP.ToString();
+                    txtProcClock.Text = item.base_clock.ToString();
+                }  
+            }
+
+        }
+
+        private void txtProcTDP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var EditCPU = new Edit_CPU();
+            EditCPU.Show();
+        }
+
+        private void lblAddProc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var AddCPU = new Add_CPU();
+            AddCPU.Show();
+        }
+
+        private void lblReset_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var Resetted = new Form1();
+            Resetted.Show();
+            Hide();
+        }
+
+        private void lblAddGPU_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var AddGPU = new Add_GPU();
+            AddGPU.Show();
+        }
+
+        private void lblEditGPU_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var EditGPU = new Edit_GPU();
+            EditGPU.Show();
+        }
+
+        private void btnSaveProfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedCPU, selectedGPU;
+                if (txtProcName.SelectedValue == null) return;
+                int.TryParse(txtProcName.SelectedValue.ToString(), out selectedCPU);
+                if (txtGPUName.SelectedValue == null) return;
+                int.TryParse(txtGPUName.SelectedValue.ToString(), out selectedGPU);
+
+                using (var db = new ComputerDBEntities())
+                {
+                    DBComputer newComputer = new DBComputer()
+                    {
+                        OwnerName = txtOwnerName.Text,
+                        Motherboard_Size = currentKomputer.MotherboardPC.Size,
+                        GPU_Id = selectedGPU,
+                        CPU_Id = selectedCPU,
+                        RAM_Size = currentKomputer.RAMPC.memory_size,
+                        Drive_Count = currentKomputer.DrivePC.drive_count
+                    };
+                    db.DBComputer.Add(newComputer);
+                    db.SaveChanges();
+                    MessageBox.Show("Profil sukses disimpan");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Gagal Menambahkan");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var CekProfil = new CekProfil();
+            CekProfil.Show();
+        }
+
+        private void txtOwnerName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
